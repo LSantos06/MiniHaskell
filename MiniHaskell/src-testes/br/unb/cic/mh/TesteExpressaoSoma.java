@@ -3,8 +3,6 @@ package br.unb.cic.mh;
 import org.junit.Assert;
 import org.junit.Test;
 
- 
-
 public class TesteExpressaoSoma {
 
 	@Test
@@ -15,6 +13,7 @@ public class TesteExpressaoSoma {
 		ExpressaoSoma soma = new ExpressaoSoma(v5, v10);
 		
 		ValorInteiro res = (ValorInteiro)soma.avaliar();
+		
 		Assert.assertEquals(new Integer(15), res.getValor());
 	}
 	

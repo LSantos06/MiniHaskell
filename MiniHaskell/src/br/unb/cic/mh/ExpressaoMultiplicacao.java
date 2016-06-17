@@ -3,12 +3,12 @@ package br.unb.cic.mh;
 /**
  * @author LSantos06
  * 
- * Uma expressao soma eh uma expressao binaria que 
- * realiza a soma entre duas sub-expressoes inteiras.
+ * Uma expressao multiplicacao eh uma expressao binaria que 
+ * realiza a multiplicacao entre duas sub-expressoes inteiras.
  */
-public class ExpressaoSoma extends ExpressaoBinaria {
+public class ExpressaoMultiplicacao extends ExpressaoBinaria {
 
-	public ExpressaoSoma(Expressao subExpressao1, Expressao subExpressao2) {
+	public ExpressaoMultiplicacao(Expressao subExpressao1, Expressao subExpressao2) {
 		super(subExpressao1, subExpressao2);
 	}
 	
@@ -48,7 +48,7 @@ public class ExpressaoSoma extends ExpressaoBinaria {
 	/**
 	 * @author LSantos06
 	 * 
-	 * A funcao avaliar realiza a SOMA entre as duas 
+	 * A funcao avaliar realiza a MULTIPLICACAO entre as duas 
 	 * sub-expressoes.
 	 */	
 	@Override
@@ -56,6 +56,6 @@ public class ExpressaoSoma extends ExpressaoBinaria {
 		ValorInteiro valor1 = (ValorInteiro)subExpressao1.avaliar();
 		ValorInteiro valor2 = (ValorInteiro)subExpressao2.avaliar();
 		
-		return new ValorInteiro(valor1.getValor() + valor2.getValor());
+		return new ValorInteiro(valor1.getValor() * valor2.getValor());
 	}
 }
