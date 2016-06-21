@@ -1,4 +1,10 @@
-package br.unb.cic.mh;
+package br.unb.cic.poo.expressoes.binarias;
+
+import br.unb.cic.poo.expressoes.Expressao;
+import br.unb.cic.poo.expressoes.ExpressaoBinaria;
+import br.unb.cic.poo.expressoes.Tipo;
+import br.unb.cic.poo.valores.Valor;
+import br.unb.cic.poo.valores.ValorInteiro;
 
 /**
  * @author LSantos06

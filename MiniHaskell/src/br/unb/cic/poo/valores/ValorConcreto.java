@@ -1,5 +1,10 @@
-package br.unb.cic.mh;
+package br.unb.cic.poo.valores;
 
+/**
+ * @author LSantos06
+ * 
+ * Classe que implementa os tipos nos valores da linguagem.
+ */
 public abstract class ValorConcreto<T> implements Valor {
 
 	protected T valor;
@@ -7,7 +12,7 @@ public abstract class ValorConcreto<T> implements Valor {
 	public ValorConcreto(T valor) {
 		this.valor = valor;
 	}
-
+	
 	@Override
 	public Valor avaliar() {
 		return this;
@@ -21,14 +26,4 @@ public abstract class ValorConcreto<T> implements Valor {
 	public T getValor() {
 		return valor;
 	}
-
-	@Override
-	public boolean equals(Object outroValor) {
-		if(outroValor instanceof ValorConcreto) {
-			ValorConcreto valorConcreto = (ValorConcreto) outroValor;
-			return valorConcreto.valor.equals(valor);
-		}
-		return false;
-	}
-
 }
