@@ -1,10 +1,16 @@
-package br.unb.cic.mh;
+package br.unb.cic.poo.expressoes.logicas;
+
+import br.unb.cic.poo.expressoes.Expressao;
+import br.unb.cic.poo.expressoes.ExpressaoUnaria;
+import br.unb.cic.poo.expressoes.Tipo;
+import br.unb.cic.poo.valores.Valor;
+import br.unb.cic.poo.valores.ValorBooleano;
 
 /**
  * @author PedroAcA
  * 
  * Uma expressao and eh uma expressao binaria que 
- * realiza a operacao logica and entre duas sub-expressoes booleanas.
+ * realiza a operacao logica NOT em uma sub-expressao booleana.
  */
 public class ExpressaoNOT extends ExpressaoUnaria {
 
@@ -15,7 +21,7 @@ public class ExpressaoNOT extends ExpressaoUnaria {
 	/**
 	 * @author PedroAcA
 	 * 
-	 * Se ambas as sub-expressoes sao booleanas
+	 * Se ambas a sub-expressao eh booleana
 	 * 		return BOOLEANO
 	 * Senao
 	 * 		return ERRO
@@ -45,8 +51,7 @@ public class ExpressaoNOT extends ExpressaoUnaria {
 	/**
 	 * @author PedroAcA
 	 * 
-	 * A funcao avaliar realiza a operacao logica AND entre as duas 
-	 * sub-expressoes.
+	 * A funcao avaliar realiza a operacao logica NOT na sub-expressao.
 	 */	
 	@Override
 	public Valor avaliar() {

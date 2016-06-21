@@ -1,14 +1,20 @@
-package br.unb.cic.mh;
+package br.unb.cic.poo.expressoes.logicas;
+
+import br.unb.cic.poo.expressoes.Expressao;
+import br.unb.cic.poo.expressoes.ExpressaoBinaria;
+import br.unb.cic.poo.expressoes.Tipo;
+import br.unb.cic.poo.valores.Valor;
+import br.unb.cic.poo.valores.ValorBooleano;
 
 /**
  * @author PedroAcA
  * 
- * Uma expressao or eh uma expressao binaria que 
- * realiza a operacao logica or entre duas sub-expressoes booleanas.
+ * Uma expressao and eh uma expressao binaria que 
+ * realiza a operacao logica AND entre duas sub-expressoes booleanas.
  */
-public class ExpressaoOR extends ExpressaoBinaria {
+public class ExpressaoAND extends ExpressaoBinaria {
 
-	public ExpressaoOR(Expressao subExpressao1, Expressao subExpressao2) {
+	public ExpressaoAND(Expressao subExpressao1, Expressao subExpressao2) {
 		super(subExpressao1, subExpressao2);
 	}
 	
@@ -48,7 +54,7 @@ public class ExpressaoOR extends ExpressaoBinaria {
 	/**
 	 * @author PedroAcA
 	 * 
-	 * A funcao avaliar realiza a operacao logica OR entre as duas 
+	 * A funcao avaliar realiza a operacao logica AND entre as duas 
 	 * sub-expressoes.
 	 */	
 	@Override
@@ -56,6 +62,6 @@ public class ExpressaoOR extends ExpressaoBinaria {
 		ValorBooleano valor1 = (ValorBooleano)subExpressao1.avaliar();
 		ValorBooleano valor2 = (ValorBooleano)subExpressao2.avaliar();
 		
-		return new ValorBooleano(valor1.getValor() || valor2.getValor());
+		return new ValorBooleano(valor1.getValor() && valor2.getValor());
 	}
 }
