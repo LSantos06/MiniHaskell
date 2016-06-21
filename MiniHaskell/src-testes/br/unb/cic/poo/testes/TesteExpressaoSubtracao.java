@@ -43,7 +43,7 @@ public class TesteExpressaoSubtracao {
 		
 		ValorInteiro res = (ValorInteiro)subtracao2.avaliar();
 		
-		Assert.assertEquals(new ValorInteiro(-25), res);
+		Assert.assertEquals(new Integer(-25), res.getValor());
 	}
 
 }
