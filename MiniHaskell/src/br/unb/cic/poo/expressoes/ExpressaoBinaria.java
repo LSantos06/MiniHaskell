@@ -1,4 +1,4 @@
-package br.unb.cic.mh;
+package br.unb.cic.poo.expressoes;
 
 /**
  * @author LSantos06

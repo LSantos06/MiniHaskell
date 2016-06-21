@@ -1,5 +1,13 @@
-package br.unb.cic.mh;
+package br.unb.cic.poo.expressoes;
 
+import br.unb.cic.poo.valores.Valor;
+import br.unb.cic.poo.valores.ValorBooleano;
+
+/**
+ * @author LSantos06
+ * 
+ * Classe que implementa a expressao IfThenElse.
+ */
 public class IfThenElse implements Expressao{
 	
 	private Expressao condicao;
@@ -12,12 +20,20 @@ public class IfThenElse implements Expressao{
 		this.clausulaThen = clausulaThen;
 		this.clausulaElse = clausulaElse;
 	}
-
+	
+	/**
+	 * @author LSantos06
+	 * 
+	 * Se a condicao for satisfeita
+	 * 		return THEN
+	 * Senao
+	 * 		return ELSE
+	 */
 	@Override
 	public Valor avaliar() {
-		ValorBooleano c = (ValorBooleano)condicao.avaliar();
+		ValorBooleano valor = (ValorBooleano)condicao.avaliar();
 		
-		if(c.getValor() == true) {
+		if(valor.getValor() == true) {
 			return clausulaThen.avaliar();
 		}
 		else {
@@ -25,11 +41,19 @@ public class IfThenElse implements Expressao{
 		}
 	}
 
+	/**
+	 * @author LSantos06
+	 * 
+	 * Se o tipo dos atributos do IfThenElse forem BOOLEANO
+	 * 		return BOOLEANO
+	 * Senao 
+	 * 		return ERRO
+	 */
 	@Override
 	public Tipo tipo() {
-		Tipo cond = condicao.tipo();
+		Tipo tipoCondicao = condicao.tipo();
 		
-		if(cond.equals(Tipo.BOOLEANO)) {
+		if(tipoCondicao.equals(Tipo.BOOLEANO)) {
 			if(clausulaThen.tipo().equals(clausulaElse.tipo())) {
 				return clausulaThen.tipo();
 			}
@@ -37,11 +61,10 @@ public class IfThenElse implements Expressao{
 		return Tipo.ERRO;
 	}
 
+	
 	@Override
 	public boolean checarTipo() {
 		return !tipo().equals(Tipo.ERRO);
 	} 
 	
-	
-
 }
