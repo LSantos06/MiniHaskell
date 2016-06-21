@@ -31,7 +31,7 @@ public class TesteExpressaoSoma {
 		
 		ValorInteiro res = (ValorInteiro)soma2.avaliar();
 		
-		Assert.assertEquals(new ValorInteiro(35), res);
+		Assert.assertEquals(new Integer(35), res.getValor());
 	}
 
 }
