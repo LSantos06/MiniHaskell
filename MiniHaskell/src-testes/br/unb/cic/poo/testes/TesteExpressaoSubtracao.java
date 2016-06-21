@@ -1,7 +1,10 @@
-package br.unb.cic.mh;
+package br.unb.cic.poo.testes;
 
 import org.junit.Assert;
 import org.junit.Test;
+
+import br.unb.cic.poo.expressoes.binarias.ExpressaoSubtracao;
+import br.unb.cic.poo.valores.ValorInteiro;
 
 public class TesteExpressaoSubtracao {
 
@@ -40,7 +43,7 @@ public class TesteExpressaoSubtracao {
 		
 		ValorInteiro res = (ValorInteiro)subtracao2.avaliar();
 		
-		Assert.assertEquals(new ValorInteiro(-25), res);
+		Assert.assertEquals(new Integer(-25), res.getValor());
 	}
 
 }

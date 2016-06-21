@@ -1,7 +1,10 @@
-package br.unb.cic.mh;
+package br.unb.cic.poo.testes;
 
 import org.junit.Assert;
 import org.junit.Test;
+
+import br.unb.cic.poo.expressoes.binarias.ExpressaoSoma;
+import br.unb.cic.poo.valores.ValorInteiro;
 
 public class TesteExpressaoSoma {
 
@@ -28,7 +31,7 @@ public class TesteExpressaoSoma {
 		
 		ValorInteiro res = (ValorInteiro)soma2.avaliar();
 		
-		Assert.assertEquals(new ValorInteiro(35), res);
+		Assert.assertEquals(new Integer(35), res.getValor());
 	}
 
 }

@@ -1,17 +1,6 @@
-package br.unb.cic.mh;
+package br.unb.cic.poo.expressoes;
 
-/**
- * @author LSantos06
- * 
- * Tipos possiveis para uma expressao:
- * 		- Booleano;
- * 		- Inteiro.
- */
-enum Tipo {
-	BOOLEANO,
-	INTEIRO,
-	ERRO;
-}
+import br.unb.cic.poo.valores.Valor;
 
 /**
  * @author LSantos06
