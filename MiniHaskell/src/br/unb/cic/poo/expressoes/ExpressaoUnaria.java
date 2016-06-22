@@ -8,9 +8,9 @@ package br.unb.cic.poo.expressoes;
  */
 public abstract class ExpressaoUnaria implements Expressao{
 	
-	protected Expressao subExpressao1;
+	protected Expressao subExpressao;
 	
-	public ExpressaoUnaria(Expressao subExpressao1) {
-		this.subExpressao1 = subExpressao1;
+	public ExpressaoUnaria(Expressao subExpressao) {
+		this.subExpressao = subExpressao;
 	}
 }

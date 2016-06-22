@@ -14,6 +14,15 @@ public abstract class ValorConcreto<T> implements Valor {
 	}
 	
 	@Override
+	public boolean equals(Object outroValor) {
+		if(outroValor instanceof ValorConcreto) {
+			ValorConcreto<?> valorConcreto = (ValorConcreto<?>) outroValor;
+			return valorConcreto.valor.equals(valor);
+		}
+		return false;
+	}
+	
+	@Override
 	public Valor avaliar() {
 		return this;
 	}
@@ -26,4 +35,5 @@ public abstract class ValorConcreto<T> implements Valor {
 	public T getValor() {
 		return valor;
 	}
+	
 }
