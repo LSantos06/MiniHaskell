@@ -16,10 +16,10 @@ import br.unb.cic.poo.expressoes.Expressao;
 public class DeclaracaoFuncao {
 	
 	private String nome;
-	private List<String> argumentos;
+	private List<ArgumentoFormal> argumentos;
 	private Expressao corpo;
 	
-	public DeclaracaoFuncao(String nome, List<String> argumentos, Expressao corpo) {
+	public DeclaracaoFuncao(String nome, List<ArgumentoFormal> argumentos, Expressao corpo) {
 		this.nome = nome;
 		this.argumentos = argumentos;
 		this.corpo = corpo;
@@ -29,7 +29,7 @@ public class DeclaracaoFuncao {
 		return nome;
 	}
 
-	public List<String> getArgumentos() {
+	public List<ArgumentoFormal> getArgumentos() {
 		return argumentos;
 	}
 

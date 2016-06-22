@@ -1,7 +1,5 @@
 package br.unb.cic.poo.valores;
 
-import br.unb.cic.poo.expressoes.Tipo;
-
 /**
  * @author LSantos06
  * 

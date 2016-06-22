@@ -2,7 +2,7 @@ package br.unb.cic.poo.expressoes.logicas;
 
 import br.unb.cic.poo.expressoes.Expressao;
 import br.unb.cic.poo.expressoes.ExpressaoUnaria;
-import br.unb.cic.poo.expressoes.Tipo;
+import br.unb.cic.poo.valores.Tipo;
 import br.unb.cic.poo.valores.Valor;
 import br.unb.cic.poo.valores.ValorBooleano;
 
@@ -14,8 +14,8 @@ import br.unb.cic.poo.valores.ValorBooleano;
  */
 public class ExpressaoNOT extends ExpressaoUnaria {
 
-	public ExpressaoNOT(Expressao subExpressao1) {
-		super(subExpressao1);
+	public ExpressaoNOT(Expressao subExpressao) {
+		super(subExpressao);
 	}
 	
 	/**
@@ -28,7 +28,7 @@ public class ExpressaoNOT extends ExpressaoUnaria {
 	 */
 	@Override
 	public Tipo tipo() {		
-		Tipo tipoSubExpressao1 = subExpressao1.tipo();
+		Tipo tipoSubExpressao1 = subExpressao.tipo();
 		if(tipoSubExpressao1.equals(Tipo.BOOLEANO) ) {
 			return Tipo.BOOLEANO;
 		}
@@ -55,7 +55,7 @@ public class ExpressaoNOT extends ExpressaoUnaria {
 	 */	
 	@Override
 	public Valor avaliar() {
-		ValorBooleano valor1 = (ValorBooleano)subExpressao1.avaliar();
+		ValorBooleano valor1 = (ValorBooleano)subExpressao.avaliar();
 		
 		return new ValorBooleano(!valor1.getValor());
 	}

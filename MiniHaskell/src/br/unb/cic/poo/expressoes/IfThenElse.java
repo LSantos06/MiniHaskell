@@ -1,5 +1,6 @@
 package br.unb.cic.poo.expressoes;
 
+import br.unb.cic.poo.valores.Tipo;
 import br.unb.cic.poo.valores.Valor;
 import br.unb.cic.poo.valores.ValorBooleano;
 
