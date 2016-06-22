@@ -1,4 +1,4 @@
-package br.unb.cic.poo.expressoes;
+package br.unb.cic.poo.valores;
 
 /**
  * @author LSantos06
