@@ -10,5 +10,6 @@ package br.unb.cic.poo.valores;
 public enum Tipo {
 	BOOLEANO,
 	INTEIRO,
+	Funcao,// indica que a funcao esta bem tipada
 	ERRO;
 }
