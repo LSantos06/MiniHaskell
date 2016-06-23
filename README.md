@@ -2,7 +2,7 @@ MiniHaskell
 ==========
 Projeto da disciplina de Programação Orientada a Objetos (1/2016) na Universidade de Brasília.
 
-##### Especificação do projeto:
+##### Especificação do projeto
 A partir do projeto inicial disponibilizado pelo professor, executar as seguintes tarefas:
 - [ ] Criar novas expressões lógicas (and, or, not), expressões envolvendo inteiros (*, /, -) e operadores relacionais (==, !=, <, >, <=, >=);
 - [ ] Criar casos de testes para as expressoes: Let e Aplicação de Função;
@@ -17,4 +17,8 @@ A partir do projeto inicial disponibilizado pelo professor, executar as seguinte
 - [ ] Escrever funções que manipulam listas (tamanho, elemento em uma posicao especifica, ...);
 - [ ] Implementar um parser e um programa para interpretar MiniHaskell.
 
-##### Material de estudo:
+##### Data de entrega
+08/06/2016
+
+##### Grupo
+Filipe Teixeira, Lucas Santos e Pedro Aurélio.
