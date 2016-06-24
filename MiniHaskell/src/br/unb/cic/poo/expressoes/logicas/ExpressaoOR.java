@@ -5,6 +5,7 @@ import br.unb.cic.poo.expressoes.ExpressaoBinaria;
 import br.unb.cic.poo.valores.Tipo;
 import br.unb.cic.poo.valores.Valor;
 import br.unb.cic.poo.valores.ValorBooleano;
+import br.unb.cic.poo.visitor.Visitor;
 
 /**
  * @author PedroAcA
@@ -63,5 +64,10 @@ public class ExpressaoOR extends ExpressaoBinaria {
 		ValorBooleano valor2 = (ValorBooleano)subExpressao2.avaliar();
 		
 		return new ValorBooleano(valor1.getValor() || valor2.getValor());
+	}
+	
+	@Override
+	public void aceitar(Visitor visitor) {
+		visitor.visitar(this);	
 	}
 }

@@ -1,5 +1,7 @@
 package br.unb.cic.poo.valores;
 
+import br.unb.cic.poo.visitor.Visitor;
+
 /**
  * @author LSantos06
  * 
@@ -16,4 +18,8 @@ public class ValorInteiro extends ValorConcreto<Integer>{
 		return Tipo.INTEIRO;
 	}
 	
+	@Override
+	public void aceitar(Visitor visitor) {
+		visitor.visitar(this);	
+	}
 }

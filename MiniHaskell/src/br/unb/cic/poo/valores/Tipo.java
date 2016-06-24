@@ -5,11 +5,12 @@ package br.unb.cic.poo.valores;
  * 
  * Tipos possiveis para uma expressao:
  * 		- Booleano;
- * 		- Inteiro.
+ * 		- Inteiro;
+ * 		- Funcao, indica que a funcao esta bem tipada.
  */
 public enum Tipo {
 	BOOLEANO,
 	INTEIRO,
-	Funcao,// indica que a funcao esta bem tipada
+	FUNCAO,
 	ERRO;
 }

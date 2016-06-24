@@ -3,19 +3,20 @@ package br.unb.cic.poo.expressoes;
 import br.unb.cic.poo.valores.Tipo;
 import br.unb.cic.poo.valores.Valor;
 import br.unb.cic.poo.valores.ValorBooleano;
+import br.unb.cic.poo.visitor.Visitor;
 
 /**
  * @author LSantos06
  * 
  * Classe que implementa a expressao IfThenElse.
  */
-public class IfThenElse implements Expressao{
+public class ExpressaoIfThenElse implements Expressao{
 	
 	private Expressao condicao;
 	private Expressao clausulaThen;
 	private Expressao clausulaElse;
 	
-	public IfThenElse(Expressao condicao, Expressao clausulaThen,
+	public ExpressaoIfThenElse(Expressao condicao, Expressao clausulaThen,
 			Expressao clausulaElse) {
 		this.condicao = condicao;
 		this.clausulaThen = clausulaThen;
@@ -67,5 +68,10 @@ public class IfThenElse implements Expressao{
 	public boolean checarTipo() {
 		return !tipo().equals(Tipo.ERRO);
 	} 
+	
+	@Override
+	public void aceitar(Visitor visitor) {
+		visitor.visitar(this);	
+	}
 	
 }
