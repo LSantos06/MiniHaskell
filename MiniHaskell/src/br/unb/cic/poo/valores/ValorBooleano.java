@@ -1,5 +1,7 @@
 package br.unb.cic.poo.valores;
 
+import br.unb.cic.poo.visitor.Visitor;
+
 /**
  * @author LSantos06
  * 
@@ -15,4 +17,9 @@ public class ValorBooleano extends ValorConcreto<Boolean>{
 	public Tipo tipo() {
 		return Tipo.BOOLEANO;
 	}	
+	
+	@Override
+	public void aceitar(Visitor visitor) {
+		visitor.visitar(this);	
+	}
 }

@@ -3,6 +3,7 @@ package br.unb.cic.poo.expressoes;
 import br.unb.cic.poo.main.AmbienteExecucao;
 import br.unb.cic.poo.valores.Tipo;
 import br.unb.cic.poo.valores.Valor;
+import br.unb.cic.poo.visitor.Visitor;
 
 /**
  * @author LSantos06
@@ -65,4 +66,8 @@ public class ExpressaoLet implements Expressao{
 		return corpo.avaliar();
 	}
 
+	@Override
+	public void aceitar(Visitor visitor) {
+		visitor.visitar(this);	
+	}
 }
