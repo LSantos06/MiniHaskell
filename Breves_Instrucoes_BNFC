@@ -1,9 +1,0 @@
-Se não tiver o latex instalado,entao instale com o seguinte comando no terminal:	
-	sudo apt-get install texlive
-
-1) Instale o bnfc através do site:http://bnfc.digitalgrammars.com (consultado em 24/06/2016 ) ou digite no terminal:  sudo apt-get install bnfc
-
-2) Va na aba de tutorial do site do item 1) e siga as instrucoes fornecidas ente o tópico My first compiler: calculator e Setting the Java class path. Para o cup, a unica pasta necessaria é a pasta java_cup ( presente dentro da pasta java_cup_v10k). Após extrair o arquivo java_cup_v10k.tar.gz, selecione somente a pasta java_cup e a coloque na pasta Cup indicada. Para o arquivo JLex, salve-o como Main.java 
-
-3) Nao se esqueca de dar autorizacao de leitura para os arquivos das pastas contendo o Jlex e o Cup.
-
