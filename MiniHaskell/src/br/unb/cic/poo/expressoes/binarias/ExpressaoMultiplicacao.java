@@ -5,6 +5,7 @@ import br.unb.cic.poo.expressoes.ExpressaoBinaria;
 import br.unb.cic.poo.valores.Tipo;
 import br.unb.cic.poo.valores.Valor;
 import br.unb.cic.poo.valores.ValorInteiro;
+import br.unb.cic.poo.visitor.Visitor;
 
 /**
  * @author LSantos06
@@ -63,5 +64,10 @@ public class ExpressaoMultiplicacao extends ExpressaoBinaria {
 		ValorInteiro valor2 = (ValorInteiro)subExpressao2.avaliar();
 		
 		return new ValorInteiro(valor1.getValor() * valor2.getValor());
+	}
+	
+	@Override
+	public void aceitar(Visitor visitor) {
+		visitor.visitar(this);	
 	}
 }

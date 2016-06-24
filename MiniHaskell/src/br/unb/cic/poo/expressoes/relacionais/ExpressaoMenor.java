@@ -1,21 +1,23 @@
-package br.unb.cic.poo.expressoes.binarias;
+package br.unb.cic.poo.expressoes.relacionais;
 
 import br.unb.cic.poo.expressoes.Expressao;
 import br.unb.cic.poo.expressoes.ExpressaoBinaria;
 import br.unb.cic.poo.valores.Tipo;
 import br.unb.cic.poo.valores.Valor;
+import br.unb.cic.poo.valores.ValorBooleano;
 import br.unb.cic.poo.valores.ValorInteiro;
 import br.unb.cic.poo.visitor.Visitor;
 
 /**
  * @author LSantos06
  * 
- * Uma expressao divisao eh uma expressao binaria que 
- * realiza a divisao entre duas sub-expressoes inteiras.
+ * Uma expressao maior eh uma expressao binaria que 
+ * realiza a comparacao entre dois valores inteiros
+ * e avalia se o primeiro valor eh menor que o segundo.
  */
-public class ExpressaoDivisao extends ExpressaoBinaria {
-
-	public ExpressaoDivisao(Expressao subExpressao1, Expressao subExpressao2) {
+public class ExpressaoMenor extends ExpressaoBinaria{
+	
+	public ExpressaoMenor(Expressao subExpressao1, Expressao subExpressao2) {
 		super(subExpressao1, subExpressao2);
 	}
 	
@@ -55,17 +57,19 @@ public class ExpressaoDivisao extends ExpressaoBinaria {
 	/**
 	 * @author LSantos06
 	 * 
-	 * A funcao avaliar realiza a DIVISAO entre as duas 
-	 * sub-expressoes.
+	 * Se a subExpressao1 < subExpressao2
+	 * 		return TRUE
+	 * Senao
+	 * 		return FALSE
 	 */	
 	@Override
 	public Valor avaliar() {
 		ValorInteiro valor1 = (ValorInteiro)subExpressao1.avaliar();
 		ValorInteiro valor2 = (ValorInteiro)subExpressao2.avaliar();
 		
-		return new ValorInteiro(valor1.getValor() / valor2.getValor());
+		return new ValorBooleano(valor1.getValor() < valor2.getValor());
 	}
-	
+
 	@Override
 	public void aceitar(Visitor visitor) {
 		visitor.visitar(this);	

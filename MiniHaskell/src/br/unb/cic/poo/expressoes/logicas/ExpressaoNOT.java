@@ -5,6 +5,7 @@ import br.unb.cic.poo.expressoes.ExpressaoUnaria;
 import br.unb.cic.poo.valores.Tipo;
 import br.unb.cic.poo.valores.Valor;
 import br.unb.cic.poo.valores.ValorBooleano;
+import br.unb.cic.poo.visitor.Visitor;
 
 /**
  * @author PedroAcA
@@ -58,5 +59,10 @@ public class ExpressaoNOT extends ExpressaoUnaria {
 		ValorBooleano valor1 = (ValorBooleano)subExpressao.avaliar();
 		
 		return new ValorBooleano(!valor1.getValor());
+	}
+	
+	@Override
+	public void aceitar(Visitor visitor) {
+		visitor.visitar(this);	
 	}
 }

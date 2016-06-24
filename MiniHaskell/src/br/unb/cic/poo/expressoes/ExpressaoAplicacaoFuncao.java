@@ -2,6 +2,7 @@ package br.unb.cic.poo.expressoes;
 
 import br.unb.cic.poo.valores.Tipo;
 import br.unb.cic.poo.valores.Valor;
+import br.unb.cic.poo.visitor.Visitor;
 
 public class ExpressaoAplicacaoFuncao implements Expressao{
 
@@ -23,4 +24,8 @@ public class ExpressaoAplicacaoFuncao implements Expressao{
 		return null;
 	}
 
+	@Override
+	public void aceitar(Visitor visitor) {
+		visitor.visitar(this);	
+	}
 }
