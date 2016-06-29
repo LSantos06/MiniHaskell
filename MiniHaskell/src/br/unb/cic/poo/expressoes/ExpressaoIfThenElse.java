@@ -23,6 +23,18 @@ public class ExpressaoIfThenElse implements Expressao{
 		this.clausulaElse = clausulaElse;
 	}
 	
+	public Expressao getCondicao() {
+		return condicao;
+	}
+
+	public Expressao getClausulaThen() {
+		return clausulaThen;
+	}
+
+	public Expressao getClausulaElse() {
+		return clausulaElse;
+	}
+
 	/**
 	 * @author LSantos06
 	 * 
