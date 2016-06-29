@@ -18,6 +18,10 @@ public class ExpressaoReferenciaIdentificador implements Expressao{
 	public ExpressaoReferenciaIdentificador(String id) {
 		this.id = id;
 	}
+	
+	public String getId() {
+		return id;
+	}
 
 	@Override
 	public Tipo tipo() {

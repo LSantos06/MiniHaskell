@@ -27,6 +27,18 @@ public class ExpressaoLet implements Expressao{
 		this.expressao = expressao;
 		this.corpo = corpo;
 	}
+	
+	public String getId() {
+		return id;
+	}
+
+	public Expressao getExpressao() {
+		return expressao;
+	}
+	
+	public Expressao getCorpo() {
+		return corpo;
+	}
 
 	/**
 	 * @author LSantos06

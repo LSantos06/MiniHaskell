@@ -15,4 +15,13 @@ public abstract class ExpressaoBinaria implements Expressao{
 		this.subExpressao1 = subExpressao1;
 		this.subExpressao2 = subExpressao2;
 	}
+
+	public Expressao getSubExpressao1() {
+		return subExpressao1;
+	}
+
+	public Expressao getSubExpressao2() {
+		return subExpressao2;
+	}
+	
 }
