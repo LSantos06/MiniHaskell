@@ -189,10 +189,19 @@ public class ImpressaoBonita implements Visitor{
 		/*
 		 * x, y, z, )
 		 */
-		//TODO
+		int contador = 0;
+		
 		for (Expressao parametro: expressao.getParametros()){
+			contador++;
+			
 			parametro.aceitar(this);
-			System.out.print(", ");
+			
+			/*
+			 * Se a expressao a ser printada nao eh a ultima
+			 */
+			if (contador != (expressao.getParametros().size())){
+				System.out.print(", ");
+			}
 		}
 		System.out.print(")");
 		
