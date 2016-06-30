@@ -15,7 +15,9 @@ import br.unb.cic.poo.expressoes.logicas.ExpressaoOR;
 import br.unb.cic.poo.expressoes.relacionais.ExpressaoDiferente;
 import br.unb.cic.poo.expressoes.relacionais.ExpressaoIgual;
 import br.unb.cic.poo.expressoes.relacionais.ExpressaoMaior;
+import br.unb.cic.poo.expressoes.relacionais.ExpressaoMaiorIgual;
 import br.unb.cic.poo.expressoes.relacionais.ExpressaoMenor;
+import br.unb.cic.poo.expressoes.relacionais.ExpressaoMenorIgual;
 import br.unb.cic.poo.funcoes.AvaliadorExpressoes;
 import br.unb.cic.poo.valores.ValorBooleano;
 import br.unb.cic.poo.valores.ValorInteiro;
@@ -122,12 +124,26 @@ public class Metrica implements Visitor{
 		expressao.getSubExpressao1().aceitar(this);
 		expressao.getSubExpressao2().aceitar(this);		
 	}
+	
+	@Override
+	public void visitar(ExpressaoMaiorIgual expressao) {
+		numeroNos += 1;
+		expressao.getSubExpressao1().aceitar(this);
+		expressao.getSubExpressao2().aceitar(this);		
+	}
 
 	@Override
 	public void visitar(ExpressaoMenor expressao) {
 		numeroNos += 1;
 		expressao.getSubExpressao1().aceitar(this);
 		expressao.getSubExpressao2().aceitar(this);
+	}
+	
+	@Override
+	public void visitar(ExpressaoMenorIgual expressao) {
+		numeroNos += 1;
+		expressao.getSubExpressao1().aceitar(this);
+		expressao.getSubExpressao2().aceitar(this);		
 	}
 
 	@Override

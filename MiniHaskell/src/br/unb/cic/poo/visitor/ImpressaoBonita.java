@@ -15,7 +15,9 @@ import br.unb.cic.poo.expressoes.logicas.ExpressaoOR;
 import br.unb.cic.poo.expressoes.relacionais.ExpressaoDiferente;
 import br.unb.cic.poo.expressoes.relacionais.ExpressaoIgual;
 import br.unb.cic.poo.expressoes.relacionais.ExpressaoMaior;
+import br.unb.cic.poo.expressoes.relacionais.ExpressaoMaiorIgual;
 import br.unb.cic.poo.expressoes.relacionais.ExpressaoMenor;
+import br.unb.cic.poo.expressoes.relacionais.ExpressaoMenorIgual;
 import br.unb.cic.poo.funcoes.AvaliadorExpressoes;
 import br.unb.cic.poo.valores.ValorBooleano;
 import br.unb.cic.poo.valores.ValorInteiro;
@@ -167,10 +169,30 @@ public class ImpressaoBonita implements Visitor{
 	}
 
 	@Override
+	public void visitar(ExpressaoMaiorIgual expressao) {
+		System.out.print("(");
+		expressao.getSubExpressao1().aceitar(this);
+		System.out.print(" >= ");
+		expressao.getSubExpressao2().aceitar(this);
+		System.out.print(")");
+		
+	}
+	
+	@Override
 	public void visitar(ExpressaoMenor expressao) {
 		System.out.print("(");
 		expressao.getSubExpressao1().aceitar(this);
 		System.out.print(" < ");
+		expressao.getSubExpressao2().aceitar(this);
+		System.out.print(")");
+		
+	}
+	
+	@Override
+	public void visitar(ExpressaoMenorIgual expressao) {
+		System.out.print("(");
+		expressao.getSubExpressao1().aceitar(this);
+		System.out.print(" <= ");
 		expressao.getSubExpressao2().aceitar(this);
 		System.out.print(")");
 		

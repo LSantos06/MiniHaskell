@@ -30,7 +30,9 @@ public interface Visitor {
 	public void visitar(ExpressaoDiferente expressao);
 	public void visitar(ExpressaoIgual expressao);
 	public void visitar(ExpressaoMaior expressao);
+	public void visitar(ExpressaoMaiorIgual expressao);
 	public void visitar(ExpressaoMenor expressao);
+	public void visitar(ExpressaoMenorIgual expressao);
 	
 	public void visitar(AvaliadorExpressoes expressao);
 	
