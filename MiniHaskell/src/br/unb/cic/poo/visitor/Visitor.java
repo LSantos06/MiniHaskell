@@ -10,6 +10,7 @@ import br.unb.cic.poo.expressoes.relacionais.*;
 import br.unb.cic.poo.funcoes.AvaliadorExpressoes;
 import br.unb.cic.poo.valores.ValorBooleano;
 import br.unb.cic.poo.valores.ValorInteiro;
+import br.unb.cic.poo.valores.ValorLista;
 
 public interface Visitor {
 	
@@ -38,6 +39,6 @@ public interface Visitor {
 	
 	public void visitar(ValorBooleano expressao);
 	public void visitar(ValorInteiro expressao);
-	
+	public void visitar(ValorLista expressao);
 	
 }
