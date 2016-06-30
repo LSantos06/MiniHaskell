@@ -1,7 +1,6 @@
 package br.unb.cic.poo.valores;
 
 import br.unb.cic.poo.valores.listas.ListaVazia;
-import br.unb.cic.poo.visitor.Visitor;
 
 public abstract class ValorLista<T extends Valor> implements Valor{
 
@@ -61,10 +60,5 @@ public abstract class ValorLista<T extends Valor> implements Valor{
 		}
 		
 		return tamanho;		
-	}
-
-	@Override
-	public void aceitar(Visitor visitor) {
-		visitor.visitar(this);
 	}
 }
