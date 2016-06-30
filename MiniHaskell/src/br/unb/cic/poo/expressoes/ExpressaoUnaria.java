@@ -13,4 +13,9 @@ public abstract class ExpressaoUnaria implements Expressao{
 	public ExpressaoUnaria(Expressao subExpressao) {
 		this.subExpressao = subExpressao;
 	}
+
+	public Expressao getSubExpressao() {
+		return subExpressao;
+	}
+
 }

@@ -8,7 +8,6 @@ import br.unb.cic.poo.valores.Valor;
 import br.unb.cic.poo.visitor.Visitor;
 import br.unb.cic.poo.main.AmbienteExecucao;
 import br.unb.cic.poo.expressoes.Expressao;
-import br.unb.cic.poo.main.*;
  
 /**
  * @author PedroAcA
