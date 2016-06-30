@@ -75,7 +75,7 @@ public class AvaliadorExpressoes implements Expressao {
 	/** 
 	 * @author PedroAcA
 	 * 
-	 * Compara cada elemento da funcao declarada e ve se eles sao diferentes. 
+	 * Compara cada argumento da funcao declarada e ve se eles sao diferentes. 
 	 * Se forem diferentes
 	 * 		return ERRO 
 	 * Senao 
