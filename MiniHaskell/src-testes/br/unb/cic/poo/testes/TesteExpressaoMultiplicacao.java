@@ -3,7 +3,7 @@ package br.unb.cic.poo.testes;
 import org.junit.Assert;
 import org.junit.Test;
 
-import br.unb.cic.poo.expressoes.binarias.ExpressaoMultiplicacao;
+import br.unb.cic.poo.expressoes.matematicas.ExpressaoMultiplicacao;
 import br.unb.cic.poo.valores.ValorInteiro;
 
 public class TesteExpressaoMultiplicacao {
