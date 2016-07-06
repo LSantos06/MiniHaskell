@@ -89,8 +89,8 @@ public class AvaliadorExpressoes implements Expressao {
 			argumento = funcao.getArgumentos().get(parametros.indexOf(e));
 			
 			if(!e.tipo().equals(argumento.getTipo())){
-				System.out.println("Erro no parametro" + argumento.getId() + ". Esperava tipo" + argumento.getTipo()+ 
-						"mas tipo atual " + e.tipo());
+				System.out.println("Erro no parametro " + argumento.getId() + ". Esperava tipo " + argumento.getTipo()+ 
+						" mas tipo atual " + e.tipo());
 				return Tipo.ERRO;
 			}
 		}
@@ -120,15 +120,23 @@ public class AvaliadorExpressoes implements Expressao {
 	@Override
 	public Valor avaliar() {
 		DeclaracaoFuncao funcao = AmbienteExecucao.getInstancia().obterFuncao(nome);
-		
-		if(funcao == null) {
+		// os System.out.println garantem que a menssagem de erro seja exibida na hora dos testes
+		if (nome==null){// se o nome da funcao chamada eh nulo, entao foi instanciado um objeto para 
+						//chamada da funcao, mas ela nao tem nome.
+			System.out.println("Funcao chamada nao tem nome");
+			throw new RuntimeException("Funcao chamada nao tem nome");
+		}else if(funcao == null) {
+			System.out.println("Funcao " + nome + " nao declarada");
 			throw new RuntimeException("Funcao " + nome + " nao declarada");
 		}else if (funcao.getArgumentos().size() > parametros.size()){
+			System.out.println("Funcao " + nome + " tem menos parametros dos que os declarados");
 			throw new RuntimeException("Funcao " + nome + " tem menos parametros dos que os declarados");
 		}else if (funcao.getArgumentos().size() < parametros.size()){
+			System.out.println("Funcao " + nome + " tem mais parametros dos que os declarados");
 			throw new RuntimeException("Funcao " + nome + " tem mais parametros dos que os declarados");
 		}else if (!checarTipo()){
-			throw new RuntimeException("Tipo da funcao" + nome + "nao equivale ao que foi declarado");
+			System.out.println("Tipo da funcao " + nome + " nao equivale ao que foi declarado");
+			throw new RuntimeException("Tipo da funcao " + nome + " nao equivale ao que foi declarado");
 		}
 		AmbienteExecucao.getInstancia().definirEscopo();
 	

@@ -5,7 +5,7 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
-@SuiteClasses({ TesteExpressaoAND.class, TesteExpressaoAplicacao.class, TesteExpressaoDiferente.class,
+@SuiteClasses({ TesteExpressaoAND.class, TesteExpressaoFuncao.class, TesteExpressaoDiferente.class,
 		TesteExpressaoDivisao.class, TesteExpressaoIgual.class, TesteExpressaoLet.class, TesteExpressaoMaior.class,
 		TesteExpressaoMenor.class, TesteExpressaoMultiplicacao.class, TesteExpressaoNOT.class, TesteExpressaoOR.class,
 		TesteExpressaoSoma.class, TesteExpressaoSubtracao.class })

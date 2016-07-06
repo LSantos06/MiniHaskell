@@ -6,6 +6,7 @@ import br.unb.cic.poo.expressoes.matematicas.ExpressaoMultiplicacao;
 import br.unb.cic.poo.expressoes.matematicas.ExpressaoPotencia;
 import br.unb.cic.poo.expressoes.matematicas.ExpressaoSoma;
 import br.unb.cic.poo.expressoes.matematicas.ExpressaoRaizQuadrada;
+import br.unb.cic.poo.valores.ValorBooleano;
 import br.unb.cic.poo.valores.ValorInteiro;
 
 public abstract class TesteUtil {
@@ -14,6 +15,7 @@ public abstract class TesteUtil {
 	 *
 	 * Funcoes para facilitar os testes.
 	 */
+	
 	public ExpressaoSoma soma(Expressao expressao1, Expressao expressao2){
 		return new ExpressaoSoma(expressao1, expressao2);
 	}
@@ -31,7 +33,9 @@ public abstract class TesteUtil {
 	public ValorInteiro inteiro(Integer valor){
 		return new ValorInteiro(valor);
 	}
-	
+	public  ValorBooleano booleano(Boolean valor){
+		return new ValorBooleano(valor);
+	}
 	public ExpressaoReferenciaIdentificador refId(String id){
 		return new ExpressaoReferenciaIdentificador(id);
 	}
