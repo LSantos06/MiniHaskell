@@ -1,62 +1,46 @@
 package br.unb.cic.poo.valores;
 
+import br.unb.cic.poo.valores.listas.ListaNaoVazia;
 import br.unb.cic.poo.valores.listas.ListaVazia;
 
 public abstract class ValorLista<T extends Valor> implements Valor{
 
-	protected T valor;
-	protected ValorLista<T> cabeca;
-	protected ValorLista<T> cauda;
+	protected ValorLista<T> anterior;
 	
-	public abstract ValorLista<T> inserir(T valor);
-	public abstract T obterValor();
-	public abstract void remover();
-	
-	public ValorLista(T valor) {
-		this.valor = valor;
+	protected ValorLista() {
+		this.anterior = null;
 	}
 	
-	@Override
-	public Tipo tipo() {
-		return valor.tipo();
+	public ValorLista<T> getAnterior() {
+		return anterior;
 	}
 	
-	@Override
-	public boolean checarTipo() {
-		return valor.checarTipo();
+	public void setAnterior(ValorLista<T> anterior) {
+		this.anterior = anterior;
 	}
 	
-	@Override
-	public Valor avaliar() {
-		return valor.avaliar();
+	public ValorLista<T> inserir(T valor) {
+		ValorLista<T> novo = new ListaNaoVazia<T>(valor);
+		if (this.getAnterior() != null) {
+			((ListaNaoVazia<T>) this.getAnterior()).setCauda(novo);
+		}
+		((ListaNaoVazia<T>) novo).setCauda(this);
+		novo.setAnterior(this.getAnterior());
+		this.setAnterior(novo);
+		
+		return novo;
 	}
 	
-	public T getValor() {
-		return valor;
-	}
-	public void setValor(T valor) {
-		this.valor = valor;
-	}
-	public ValorLista<T> getCabeca() {
-		return cabeca;
-	}
-	public void setCabeca(ValorLista<T> cabeca) {
-		this.cabeca = cabeca;
-	}
-	public ValorLista<T> getCauda() {
-		return cauda;
-	}
-	public void setCauda(ValorLista<T> cauda) {
-		this.cauda = cauda;
-	}
+	public abstract Valor obterValor();
 	
+	@SuppressWarnings("unchecked")
 	public int tamanho(){
 		int tamanho = 0;
 		ValorLista<?> aux = this;
 		
 		while(!(aux instanceof ListaVazia<?>)){
 			tamanho++;
-			aux = aux.getCauda();
+			aux = ((ListaNaoVazia<T>) aux).getCauda();
 		}
 		
 		return tamanho;		

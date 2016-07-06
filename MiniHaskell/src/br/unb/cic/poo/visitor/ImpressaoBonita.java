@@ -21,6 +21,8 @@ import br.unb.cic.poo.expressoes.relacionais.ExpressaoMenorIgual;
 import br.unb.cic.poo.funcoes.AvaliadorExpressoes;
 import br.unb.cic.poo.valores.ValorBooleano;
 import br.unb.cic.poo.valores.ValorInteiro;
+import br.unb.cic.poo.valores.listas.ListaNaoVazia;
+import br.unb.cic.poo.valores.listas.ListaVazia;
 
 public class ImpressaoBonita implements Visitor{
 
@@ -243,5 +245,17 @@ public class ImpressaoBonita implements Visitor{
 	@Override
 	public void visitar(ValorInteiro expressao) {
 		System.out.println(expressao.getValor());
+	}
+
+	@Override
+	public void visitar(ListaVazia<?> expressao) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void visitar(ListaNaoVazia<?> expressao) {
+		// TODO Auto-generated method stub
+		
 	}
 }

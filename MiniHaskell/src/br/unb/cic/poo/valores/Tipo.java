@@ -12,5 +12,7 @@ public enum Tipo {
 	BOOLEANO,
 	INTEIRO,
 	FUNCAO,
+	LISTAVAZIA,
+	LISTANAOVAZIA,
 	ERRO;
 }

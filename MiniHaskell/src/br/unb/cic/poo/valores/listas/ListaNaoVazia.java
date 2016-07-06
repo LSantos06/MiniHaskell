@@ -1,38 +1,65 @@
 package br.unb.cic.poo.valores.listas;
 
+import br.unb.cic.poo.valores.Tipo;
 import br.unb.cic.poo.valores.Valor;
 import br.unb.cic.poo.valores.ValorLista;
 import br.unb.cic.poo.visitor.Visitor;
 
 public class ListaNaoVazia<T extends Valor> extends ValorLista<T> {
 
-	public ListaNaoVazia(T valor) {
-		super(valor);
+	private Valor cabeca;
+	private ValorLista<T> cauda;
+	
+	public ListaNaoVazia(T cabeca) {
+		super();
+		this.cabeca = cabeca;
+		this.cauda = null;
+	}
+
+	public Valor getCabeca() {
+		return cabeca;
+	}
+
+	public void setCabeca(Valor cabeca) {
+		this.cabeca = cabeca;
+	}
+
+	public ValorLista<T> getCauda() {
+		return cauda;
+	}
+
+	public void setCauda(ValorLista<T> cauda) {
+		this.cauda = cauda;
 	}
 
 	@Override
-	public ValorLista<T> inserir(T valor) {
-		ValorLista<T> novo = new ListaNaoVazia<T>(valor);
-		novo.setCabeca(null);
-		novo.setCauda(this);
-		this.setCabeca(novo);
-		return novo;
+	public Valor obterValor() {
+		return this.getCabeca();
 	}
 
-	@Override
-	public T obterValor() {
-		return this.getValor();
-	}
-
-	@Override
-	public void remover() {
-		if (this.getCabeca() != null) {
-			this.getCabeca().setCauda(this.getCauda());
+	public ValorLista<T> remover() {
+		if (this.getAnterior() != null) {
+			((ListaNaoVazia<T>) this.getAnterior()).setCauda(this.getCauda());
 		}
-		this.getCauda().setCabeca(this.getCabeca());
-		
+		this.getCauda().setAnterior(this.getAnterior());
+		return this.getCauda();
 	}
 
+	@Override
+	public Tipo tipo() {
+		return Tipo.LISTANAOVAZIA;
+	}
+
+	@Override
+	public boolean checarTipo() {
+		return true;
+	}
+
+	@Override
+	public Valor avaliar() {
+		return cabeca.avaliar();
+	}
+	
 	@Override
 	public void aceitar(Visitor visitor) {
 		visitor.visitar(this);	

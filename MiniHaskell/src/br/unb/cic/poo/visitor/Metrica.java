@@ -21,6 +21,8 @@ import br.unb.cic.poo.expressoes.relacionais.ExpressaoMenorIgual;
 import br.unb.cic.poo.funcoes.AvaliadorExpressoes;
 import br.unb.cic.poo.valores.ValorBooleano;
 import br.unb.cic.poo.valores.ValorInteiro;
+import br.unb.cic.poo.valores.listas.ListaNaoVazia;
+import br.unb.cic.poo.valores.listas.ListaVazia;
 
 public class Metrica implements Visitor{
 
@@ -163,6 +165,18 @@ public class Metrica implements Visitor{
 	@Override
 	public void visitar(ValorInteiro expressao) {
 		numeroNos += 1;
+	}
+
+	@Override
+	public void visitar(ListaVazia<?> expressao) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void visitar(ListaNaoVazia<?> expressao) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
