@@ -21,6 +21,8 @@ public interface Visitor {
 	
 	public void visitar(ExpressaoDivisao expressao);
 	public void visitar(ExpressaoMultiplicacao expressao);
+	public void visitar(ExpressaoPotencia expressao);
+	public void visitar(ExpressaoRaizQuadrada expressao);
 	public void visitar(ExpressaoSoma expressao);
 	public void visitar(ExpressaoSubtracao expressao);
 	

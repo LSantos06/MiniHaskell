@@ -5,22 +5,13 @@ import br.unb.cic.poo.expressoes.ExpressaoAplicacaoFuncao;
 import br.unb.cic.poo.expressoes.ExpressaoIfThenElse;
 import br.unb.cic.poo.expressoes.ExpressaoLet;
 import br.unb.cic.poo.expressoes.ExpressaoReferenciaIdentificador;
-import br.unb.cic.poo.expressoes.logicas.ExpressaoAND;
-import br.unb.cic.poo.expressoes.logicas.ExpressaoNOT;
-import br.unb.cic.poo.expressoes.logicas.ExpressaoOR;
-import br.unb.cic.poo.expressoes.matematicas.ExpressaoDivisao;
-import br.unb.cic.poo.expressoes.matematicas.ExpressaoMultiplicacao;
-import br.unb.cic.poo.expressoes.matematicas.ExpressaoSoma;
-import br.unb.cic.poo.expressoes.matematicas.ExpressaoSubtracao;
-import br.unb.cic.poo.expressoes.relacionais.ExpressaoDiferente;
-import br.unb.cic.poo.expressoes.relacionais.ExpressaoIgual;
-import br.unb.cic.poo.expressoes.relacionais.ExpressaoMaior;
-import br.unb.cic.poo.expressoes.relacionais.ExpressaoMaiorIgual;
-import br.unb.cic.poo.expressoes.relacionais.ExpressaoMenor;
-import br.unb.cic.poo.expressoes.relacionais.ExpressaoMenorIgual;
+import br.unb.cic.poo.expressoes.logicas.*;
+import br.unb.cic.poo.expressoes.matematicas.*;
+import br.unb.cic.poo.expressoes.relacionais.*;
 import br.unb.cic.poo.funcoes.AvaliadorExpressoes;
 import br.unb.cic.poo.valores.ValorBooleano;
 import br.unb.cic.poo.valores.ValorInteiro;
+import br.unb.cic.poo.valores.listas.*;
 
 public class Metrica implements Visitor{
 
@@ -68,6 +59,19 @@ public class Metrica implements Visitor{
 		numeroNos += 1;
 		expressao.getSubExpressao1().aceitar(this);
 		expressao.getSubExpressao2().aceitar(this);	
+	}
+	
+	@Override
+	public void visitar(ExpressaoPotencia expressao) {
+		numeroNos += 1;
+		expressao.getSubExpressao1().aceitar(this);
+		expressao.getSubExpressao2().aceitar(this);	
+	}
+	
+	@Override
+	public void visitar(ExpressaoRaizQuadrada expressao) {
+		numeroNos += 1;
+		expressao.getSubExpressao().aceitar(this);
 	}
 
 	@Override
@@ -163,6 +167,18 @@ public class Metrica implements Visitor{
 	@Override
 	public void visitar(ValorInteiro expressao) {
 		numeroNos += 1;
+	}
+
+	@Override
+	public void visitar(ListaVazia<?> expressao) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void visitar(ListaNaoVazia<?> expressao) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

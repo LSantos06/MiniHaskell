@@ -5,22 +5,13 @@ import br.unb.cic.poo.expressoes.ExpressaoAplicacaoFuncao;
 import br.unb.cic.poo.expressoes.ExpressaoIfThenElse;
 import br.unb.cic.poo.expressoes.ExpressaoLet;
 import br.unb.cic.poo.expressoes.ExpressaoReferenciaIdentificador;
-import br.unb.cic.poo.expressoes.logicas.ExpressaoAND;
-import br.unb.cic.poo.expressoes.logicas.ExpressaoNOT;
-import br.unb.cic.poo.expressoes.logicas.ExpressaoOR;
-import br.unb.cic.poo.expressoes.matematicas.ExpressaoDivisao;
-import br.unb.cic.poo.expressoes.matematicas.ExpressaoMultiplicacao;
-import br.unb.cic.poo.expressoes.matematicas.ExpressaoSoma;
-import br.unb.cic.poo.expressoes.matematicas.ExpressaoSubtracao;
-import br.unb.cic.poo.expressoes.relacionais.ExpressaoDiferente;
-import br.unb.cic.poo.expressoes.relacionais.ExpressaoIgual;
-import br.unb.cic.poo.expressoes.relacionais.ExpressaoMaior;
-import br.unb.cic.poo.expressoes.relacionais.ExpressaoMaiorIgual;
-import br.unb.cic.poo.expressoes.relacionais.ExpressaoMenor;
-import br.unb.cic.poo.expressoes.relacionais.ExpressaoMenorIgual;
+import br.unb.cic.poo.expressoes.logicas.*;
+import br.unb.cic.poo.expressoes.matematicas.*;
+import br.unb.cic.poo.expressoes.relacionais.*;
 import br.unb.cic.poo.funcoes.AvaliadorExpressoes;
 import br.unb.cic.poo.valores.ValorBooleano;
 import br.unb.cic.poo.valores.ValorInteiro;
+import br.unb.cic.poo.valores.listas.*;
 
 public class ImpressaoBonita implements Visitor{
 
@@ -87,6 +78,34 @@ public class ImpressaoBonita implements Visitor{
 		System.out.print(" * ");
 		expressao.getSubExpressao2().aceitar(this);
 		System.out.print(")");
+		
+	}
+	
+	@Override
+	public void visitar(ExpressaoPotencia expressao) {
+		/*
+		 * ((5)^2)
+		 */
+		System.out.print("(");
+		System.out.print("(");
+		expressao.getSubExpressao1().aceitar(this);
+		System.out.print(")");
+		System.out.print("^ ");
+		expressao.getSubExpressao2().aceitar(this);
+		System.out.print(")");
+		
+	}
+	
+	@Override
+	public void visitar(ExpressaoRaizQuadrada expressao) {
+		/*
+		 * (rzqua(2))
+		 */
+		System.out.print("(rzqua");
+		System.out.print("(");
+		expressao.getSubExpressao().aceitar(this);
+		System.out.println(")");
+		System.out.println(")");
 		
 	}
 
@@ -244,4 +263,18 @@ public class ImpressaoBonita implements Visitor{
 	public void visitar(ValorInteiro expressao) {
 		System.out.println(expressao.getValor());
 	}
+
+	@Override
+	public void visitar(ListaVazia<?> expressao) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void visitar(ListaNaoVazia<?> expressao) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	
 }
