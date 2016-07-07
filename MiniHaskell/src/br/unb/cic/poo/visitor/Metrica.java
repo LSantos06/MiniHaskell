@@ -1,6 +1,5 @@
 package br.unb.cic.poo.visitor;
 
-import br.unb.cic.poo.expressoes.Expressao;
 import br.unb.cic.poo.expressoes.ExpressaoIfThenElse;
 import br.unb.cic.poo.expressoes.ExpressaoLet;
 import br.unb.cic.poo.expressoes.ExpressaoReferenciaIdentificador;
@@ -145,13 +144,10 @@ public class Metrica implements Visitor{
 
 	@Override
 	public void visitar(AplicacaoFuncao expressao) {
-		//TODO
-		for(Expressao parametro: expressao.getParametros()){
-			parametro.aceitar(this);
-		}
+		// TODO Auto-generated method stub
 		
 	}
-
+	
 	@Override
 	public void visitar(ValorBooleano expressao) {
 		numeroNos += 1;
@@ -164,7 +160,7 @@ public class Metrica implements Visitor{
 
 	@Override
 	public void visitar(ListaVazia<?> expressao) {
-		// TODO Auto-generated method stub
+		numeroNos += 1;
 		
 	}
 

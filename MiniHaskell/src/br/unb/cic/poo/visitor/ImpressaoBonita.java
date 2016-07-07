@@ -1,6 +1,5 @@
 package br.unb.cic.poo.visitor;
 
-import br.unb.cic.poo.expressoes.Expressao;
 import br.unb.cic.poo.expressoes.ExpressaoIfThenElse;
 import br.unb.cic.poo.expressoes.ExpressaoLet;
 import br.unb.cic.poo.expressoes.ExpressaoReferenciaIdentificador;
@@ -213,35 +212,10 @@ public class ImpressaoBonita implements Visitor{
 
 	@Override
 	public void visitar(AplicacaoFuncao expressao) {
-		//TODO
-		
-		/*
-		 * fat (
-		 */
-		System.out.print(expressao.getNome());
-		System.out.print(" (");
-		
-		/*
-		 * x, y, z, )
-		 */
-		int contador = 0;
-		
-		for (Expressao parametro: expressao.getParametros()){
-			contador++;
-			
-			parametro.aceitar(this);
-			
-			/*
-			 * Se a expressao a ser printada nao eh a ultima
-			 */
-			if (contador != (expressao.getParametros().size())){
-				System.out.print(", ");
-			}
-		}
-		System.out.print(")");
+		// TODO Auto-generated method stub
 		
 	}
-
+	
 	@Override
 	public void visitar(ValorBooleano expressao) {
 		if(expressao.getValor()){
@@ -260,7 +234,7 @@ public class ImpressaoBonita implements Visitor{
 
 	@Override
 	public void visitar(ListaVazia<?> expressao) {
-		// TODO Auto-generated method stub
+		System.out.println("Lista Vazia");
 		
 	}
 
