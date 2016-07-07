@@ -12,7 +12,7 @@ A partir do projeto inicial disponibilizado pelo professor, executar as seguinte
 - [ ] Corrigir os visitors implementados, mas que estão "quebrados" na versão 03 da implementação do projeto MiniHaskell;
 - [X] Incluir suporte ao tipo Lista, que pode ser uma lista vazia ou uma lista com um elemento seguido de uma outra lista (é um tipo recursivo); 
   * Em Haskell, seria algo como: *data List a = Nill | a (List a)* .
-- [ ] Escrever funções que manipulam listas (tamanho, elemento em uma posição específica, ...);
+- [X] Escrever funções que manipulam listas (tamanho, elemento em uma posição específica, ...);
 - [ ] Implementar um parser e um programa para interpretar MiniHaskell.
 
 ##### Data de entrega
