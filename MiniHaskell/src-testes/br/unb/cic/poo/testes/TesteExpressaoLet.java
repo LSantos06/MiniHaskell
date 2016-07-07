@@ -39,4 +39,24 @@ public class TesteExpressaoLet extends TesteUtil{
 		
 		assertEquals(inteiro(10), letExterno.avaliar());
 	}
+	
+	@Test
+	public void testeExpressaoLetVariavel(){
+		/*
+		 * let x = 5
+		 * in x + x
+		 */
+		ExpressaoLet letInterno = new ExpressaoLet("x", inteiro(5),
+									soma(refId("x"), refId("x")));
+		
+		/*
+		 * let x = 10
+		 * in let x = 5
+		 * 	  in x + x
+		 */
+		ExpressaoLet letExterno = new ExpressaoLet("x", inteiro(10),
+									letInterno);
+		
+		assertEquals(inteiro(10), letExterno.avaliar());
+	}
 }

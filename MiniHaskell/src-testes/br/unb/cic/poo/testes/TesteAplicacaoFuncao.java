@@ -3,15 +3,71 @@ package br.unb.cic.poo.testes;
 import org.junit.Assert;
 import org.junit.Test;
 
+import br.unb.cic.poo.funcoes.AplicacaoFuncao;
 import br.unb.cic.poo.funcoes.ArgumentoFormal;
-import br.unb.cic.poo.funcoes.AvaliadorExpressoes;
 import br.unb.cic.poo.funcoes.DeclaracaoFuncao;
 import br.unb.cic.poo.main.AmbienteExecucao;
 import br.unb.cic.poo.valores.Tipo;
 import br.unb.cic.poo.valores.ValorBooleano;
 import br.unb.cic.poo.valores.ValorInteiro;
 
-public class TesteExpressaoAplicacaoFuncao extends TesteUtil {
+public class TesteAplicacaoFuncao extends TesteUtil {
+	
+	@Test
+	public void testeFuncaoFat(){
+		/*
+		 * int fat(int x){
+		 * 		if (x == 0){
+		 * 			return 1;
+		 * 		}
+		 * 		else {
+		 * 			return (x * fat(x-1));
+		 * 		}
+		 * }
+		 */
+		//TODO RECURSIVIDADE
+		DeclaracaoFuncao fat = new DeclaracaoFuncao();
+		 fat.setNome ("fat");
+		 fat.setArgumento(new ArgumentoFormal("x", Tipo.INTEIRO));
+		 fat.setCorpo (ifThenElse(igual(refId("x"), inteiro(0)), 
+					   inteiro(1), 
+					   multiplicacao(refId("x"), /*fat*/(subtracao(refId("x"),inteiro(1))))));
+		 
+		/*
+		 * Declarando a funcao no ambiente de execucao
+		 */
+		AmbienteExecucao.getInstancia().declaraFuncao(fat);
+		
+		/*
+		 * fat(5) = 
+		 */
+		AplicacaoFuncao ae = new AplicacaoFuncao();
+		 ae.setNome("fat");
+		 ae.setParametro(inteiro(5));
+		
+		/*
+		 * fat(5)
+		 *  5 * fat(4) = 120
+	     *
+	     * fat(4)
+	     *  4 * fat(3) = 24
+	     * 
+	     * fat(3)
+	     *  3 * fat(2) = 6
+	     * 
+	     * fat(2)
+	     *  2 * fat(1) = 2
+	     * 
+	     * fat(1)
+	     *  1 * fat(0) = 1
+	     *  
+	     * fat(0)
+	     *  1 
+		 */
+		
+		//Assert.assertEquals(new ValorInteiro(120), ae.avaliar()); 
+		ae.avaliar();
+	}
 	
 	@Test
 	public void testeFuncaoIncrementa(){
@@ -33,7 +89,7 @@ public class TesteExpressaoAplicacaoFuncao extends TesteUtil {
 		/*
 		 * inc((3 + 2)) = 6
 		 */
-		AvaliadorExpressoes ae = new AvaliadorExpressoes();
+		AplicacaoFuncao ae = new AplicacaoFuncao();
 		 ae.setNome("inc");
 		 ae.setParametro(soma(inteiro(3), inteiro(2)));
 		
@@ -60,7 +116,7 @@ public class TesteExpressaoAplicacaoFuncao extends TesteUtil {
 		/*
 		 * dobro(3) = 6; 
 		 */
-		AvaliadorExpressoes ae = new AvaliadorExpressoes();
+		AplicacaoFuncao ae = new AplicacaoFuncao();
 		 ae.setNome("dobro");
 		 ae.setParametro((inteiro(3)));
 
@@ -95,7 +151,7 @@ public class TesteExpressaoAplicacaoFuncao extends TesteUtil {
 		/*
 		 * mult(3) = ERRO
 		 */
-		AvaliadorExpressoes ae = new AvaliadorExpressoes();
+		AplicacaoFuncao ae = new AplicacaoFuncao();
 		 ae.setNome("mult");
 		 ae.setParametro(inteiro(3));
 
@@ -130,7 +186,7 @@ public class TesteExpressaoAplicacaoFuncao extends TesteUtil {
 		/*
 		 * pow(3, 2, 1) = ERRO
 		 */
-		AvaliadorExpressoes ae = new AvaliadorExpressoes();
+		AplicacaoFuncao ae = new AplicacaoFuncao();
 		 ae.setNome("pow");
 		 ae.setParametro(inteiro(3));
 		 ae.setParametro(inteiro(2));
@@ -163,7 +219,7 @@ public class TesteExpressaoAplicacaoFuncao extends TesteUtil {
 		 */
 		AmbienteExecucao.getInstancia().declaraFuncao(rzqua);
 		
-		AvaliadorExpressoes ae = new AvaliadorExpressoes();
+		AplicacaoFuncao ae = new AplicacaoFuncao();
 		
 		/*
 		 * Funcao chamada nao tem nome
@@ -184,14 +240,14 @@ public class TesteExpressaoAplicacaoFuncao extends TesteUtil {
 		 * 		return raiz(x);
 		 * }
 		 */
-		AvaliadorExpressoes ae = new AvaliadorExpressoes();
+		AplicacaoFuncao ae = new AplicacaoFuncao();
 		 ae.setNome("rzqua");
 		 ae.setParametro(new ValorBooleano(true));
 		
 		/*
 		 * Tipo da funcao rzqua nao equivale ao que foi declarado
 		 */
-		System.out.print("testeTiposDiferentes = ");
+		System.out.print("testeTiposDiferentes() = ");
 		ae.avaliar();
 	}
 }

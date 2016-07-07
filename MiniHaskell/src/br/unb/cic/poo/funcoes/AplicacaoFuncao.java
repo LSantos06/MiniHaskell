@@ -17,7 +17,7 @@ import br.unb.cic.poo.expressoes.Expressao;
  * 		- Nome;
  * 		- Parametros;
  */
-public class AvaliadorExpressoes implements Expressao {
+public class AplicacaoFuncao implements Expressao {
 
 	private String nome; 
 	private List<Expressao> parametros;
@@ -29,7 +29,7 @@ public class AvaliadorExpressoes implements Expressao {
 	 * 
 	 * Inicia a lista de parametros como uma lista vazia.
 	 */
-	public AvaliadorExpressoes() {
+	public AplicacaoFuncao() {
 		this.parametros = new ArrayList<Expressao>();
 	}
 	
@@ -41,7 +41,7 @@ public class AvaliadorExpressoes implements Expressao {
 	 * @param nome Nome da funcao.
 	 * @param argumentos Lista de argumentos da funcao.
 	 */
-	public AvaliadorExpressoes(String nome, List<Expressao> argumentos) {
+	public AplicacaoFuncao(String nome, List<Expressao> argumentos) {
 		this.nome = nome;
 		this.parametros = argumentos;
 	}

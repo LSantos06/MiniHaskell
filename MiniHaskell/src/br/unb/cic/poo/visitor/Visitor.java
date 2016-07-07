@@ -1,20 +1,18 @@
 package br.unb.cic.poo.visitor;
 
-import br.unb.cic.poo.expressoes.ExpressaoAplicacaoFuncao;
 import br.unb.cic.poo.expressoes.ExpressaoIfThenElse;
 import br.unb.cic.poo.expressoes.ExpressaoLet;
 import br.unb.cic.poo.expressoes.ExpressaoReferenciaIdentificador;
 import br.unb.cic.poo.expressoes.logicas.*;
 import br.unb.cic.poo.expressoes.matematicas.*;
 import br.unb.cic.poo.expressoes.relacionais.*;
-import br.unb.cic.poo.funcoes.AvaliadorExpressoes;
+import br.unb.cic.poo.funcoes.AplicacaoFuncao;
 import br.unb.cic.poo.valores.ValorBooleano;
 import br.unb.cic.poo.valores.ValorInteiro;
 import br.unb.cic.poo.valores.listas.*;
 
 public interface Visitor {
 	
-	public void visitar(ExpressaoAplicacaoFuncao expressao);
 	public void visitar(ExpressaoLet expressao);
 	public void visitar(ExpressaoReferenciaIdentificador expressao);
 	public void visitar(ExpressaoIfThenElse expressao);
@@ -37,7 +35,7 @@ public interface Visitor {
 	public void visitar(ExpressaoMenor expressao);
 	public void visitar(ExpressaoMenorIgual expressao);
 	
-	public void visitar(AvaliadorExpressoes expressao);
+	public void visitar(AplicacaoFuncao expressao);
 	
 	public void visitar(ValorBooleano expressao);
 	public void visitar(ValorInteiro expressao);

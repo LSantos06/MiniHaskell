@@ -1,25 +1,18 @@
 package br.unb.cic.poo.visitor;
 
 import br.unb.cic.poo.expressoes.Expressao;
-import br.unb.cic.poo.expressoes.ExpressaoAplicacaoFuncao;
 import br.unb.cic.poo.expressoes.ExpressaoIfThenElse;
 import br.unb.cic.poo.expressoes.ExpressaoLet;
 import br.unb.cic.poo.expressoes.ExpressaoReferenciaIdentificador;
 import br.unb.cic.poo.expressoes.logicas.*;
 import br.unb.cic.poo.expressoes.matematicas.*;
 import br.unb.cic.poo.expressoes.relacionais.*;
-import br.unb.cic.poo.funcoes.AvaliadorExpressoes;
+import br.unb.cic.poo.funcoes.AplicacaoFuncao;
 import br.unb.cic.poo.valores.ValorBooleano;
 import br.unb.cic.poo.valores.ValorInteiro;
 import br.unb.cic.poo.valores.listas.*;
 
 public class ImpressaoBonita implements Visitor{
-
-	@Override
-	public void visitar(ExpressaoAplicacaoFuncao expressao) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public void visitar(ExpressaoLet expressao) {
@@ -218,7 +211,7 @@ public class ImpressaoBonita implements Visitor{
 	}
 
 	@Override
-	public void visitar(AvaliadorExpressoes expressao) {
+	public void visitar(AplicacaoFuncao expressao) {
 		//TODO
 		
 		/*
