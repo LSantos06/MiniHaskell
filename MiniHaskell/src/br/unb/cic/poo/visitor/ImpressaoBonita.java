@@ -10,7 +10,12 @@ import br.unb.cic.poo.expressoes.relacionais.*;
 import br.unb.cic.poo.funcoes.AplicacaoFuncao;
 import br.unb.cic.poo.valores.ValorBooleano;
 import br.unb.cic.poo.valores.ValorInteiro;
+<<<<<<< HEAD
 import br.unb.cic.poo.valores.listas.*;
+=======
+import br.unb.cic.poo.valores.listas.ListaNaoVazia;
+import br.unb.cic.poo.valores.listas.ListaVazia;
+>>>>>>> origin/ValorListaAtualizado
 
 public class ImpressaoBonita implements Visitor{
 
@@ -268,6 +273,9 @@ public class ImpressaoBonita implements Visitor{
 		// TODO Auto-generated method stub
 		
 	}
+<<<<<<< HEAD
 	
 	
+=======
+>>>>>>> origin/ValorListaAtualizado
 }
