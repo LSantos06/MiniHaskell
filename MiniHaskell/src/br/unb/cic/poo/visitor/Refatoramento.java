@@ -163,19 +163,47 @@ public class Refatoramento implements Visitor{
 
 	@Override
 	public void visitar(ExpressaoAND expressao) {
-		// TODO Auto-generated method stub
+		resultado = expressao;
 		
+		if(expressao.getSubExpressao1() instanceof ValorBooleano &&
+		   expressao.getSubExpressao2() instanceof ValorBooleano){
+		
+			boolean subExpressao1 = ((ValorBooleano)expressao.getSubExpressao1()).getValor();
+			boolean subExpressao2 = ((ValorBooleano)expressao.getSubExpressao2()).getValor();
+			
+			/*
+			 * !X AND !Y = !(X OR Y)
+			 */
+			if(!subExpressao1 && !subExpressao2){
+				ValorBooleano deMorgan = (ValorBooleano)(new ExpressaoOR(expressao.getSubExpressao1(), expressao.getSubExpressao2())).avaliar();
+				resultado = new ExpressaoNOT(deMorgan);
+			}
+			
+		}
 	}
 
 	@Override
-	public void visitar(ExpressaoNOT expressao) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void visitar(ExpressaoNOT expressao) {}
 
 	@Override
 	public void visitar(ExpressaoOR expressao) {
-		// TODO Auto-generated method stub
+		resultado = expressao;
+		
+		if(expressao.getSubExpressao1() instanceof ValorBooleano &&
+		   expressao.getSubExpressao2() instanceof ValorBooleano){
+		
+			boolean subExpressao1 = ((ValorBooleano)expressao.getSubExpressao1()).getValor();
+			boolean subExpressao2 = ((ValorBooleano)expressao.getSubExpressao2()).getValor();
+			
+			/*
+			 * !X OR !Y = !(X AND Y)
+			 */
+			if(!subExpressao1 && !subExpressao2){
+				ValorBooleano deMorgan = (ValorBooleano)(new ExpressaoAND(expressao.getSubExpressao1(), expressao.getSubExpressao2())).avaliar();
+				resultado = new ExpressaoNOT(deMorgan);
+			}
+			
+		}
 		
 	}
 
