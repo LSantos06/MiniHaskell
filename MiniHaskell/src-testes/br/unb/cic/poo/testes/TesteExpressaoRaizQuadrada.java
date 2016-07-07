@@ -8,7 +8,7 @@ import br.unb.cic.poo.valores.ValorInteiro;
 
 public class TesteExpressaoRaizQuadrada extends TesteUtil {
 	@Test
-	public void testePotenciaSimples(){
+	public void testeRaizSimples(){
 		ValorInteiro v16  = inteiro(16);
 		
 		ExpressaoRaizQuadrada r = raiz(v16);
@@ -20,16 +20,18 @@ public class TesteExpressaoRaizQuadrada extends TesteUtil {
 	
 	
 	@Test
-	public void testeRaizComplexa(){
+	public void testeRaizNegativa(){
 		ValorInteiro v1_ = inteiro(-1);
+		
 		ExpressaoRaizQuadrada r_neg = raiz(v1_);
-		ValorInteiro res1 = (ValorInteiro) r_neg.avaliar();
-		System.out.println(res1.getValor());
-		Assert.assertEquals(new Integer(-1),res1.getValor());
+		
+		ValorInteiro res = (ValorInteiro) r_neg.avaliar();
+		
+		Assert.assertEquals(new Integer(0),res.getValor());
 	}
 	
 	@Test
-	public void testePotenciaComplexa(){
+	public void testeRaizComplexa(){
 		ValorInteiro v81  = inteiro(81);
 		ExpressaoRaizQuadrada r1 = raiz(v81);
 		ExpressaoRaizQuadrada r2 = raiz(r1);

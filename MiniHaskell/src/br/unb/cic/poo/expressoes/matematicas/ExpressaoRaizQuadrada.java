@@ -7,6 +7,12 @@ import br.unb.cic.poo.valores.Valor;
 import br.unb.cic.poo.valores.ValorInteiro;
 import br.unb.cic.poo.visitor.Visitor;
 
+/**
+ * @author LSantos06
+ * 
+ * Uma expressao multiplicacao eh uma expressao unaria que 
+ * calcula a raiz quadrada de um inteiro.
+ */
 public class ExpressaoRaizQuadrada extends ExpressaoUnaria {
 
 	public ExpressaoRaizQuadrada(Expressao subExpressao1) {
@@ -56,11 +62,9 @@ public class ExpressaoRaizQuadrada extends ExpressaoUnaria {
 		
 		return new ValorInteiro((int) Math.sqrt(valor1.getValor()));
 	}
-	
-//	falta implementar o visitor!
+
 	@Override
 	public void aceitar(Visitor visitor) {
-		// TODO Auto-generated method stub
-		//visitor.visitar(this);
+		visitor.visitar(this);
 	}
 }

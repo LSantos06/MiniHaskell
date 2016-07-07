@@ -7,6 +7,7 @@ import br.unb.cic.poo.valores.Tipo;
 import br.unb.cic.poo.valores.Valor;
 import br.unb.cic.poo.valores.ValorInteiro;
 import br.unb.cic.poo.visitor.Visitor;
+
 /**
  * @author PedroAcA
  * 
@@ -66,10 +67,8 @@ public class ExpressaoPotencia extends ExpressaoBinaria{
 		return new ValorInteiro((int) Math.pow(valor1.getValor(),valor2.getValor()));
 	}
 	
-//	falta implementar o visitor!
 	@Override
 	public void aceitar(Visitor visitor) {
-		// TODO Auto-generated method stub
-		//visitor.visitar(this);
+		visitor.visitar(this);
 	}
 }

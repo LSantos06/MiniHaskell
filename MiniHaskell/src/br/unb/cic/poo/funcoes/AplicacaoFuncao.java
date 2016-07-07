@@ -17,7 +17,7 @@ import br.unb.cic.poo.expressoes.Expressao;
  * 		- Nome;
  * 		- Parametros;
  */
-public class AvaliadorExpressoes implements Expressao {
+public class AplicacaoFuncao implements Expressao {
 
 	private String nome; 
 	private List<Expressao> parametros;
@@ -29,7 +29,7 @@ public class AvaliadorExpressoes implements Expressao {
 	 * 
 	 * Inicia a lista de parametros como uma lista vazia.
 	 */
-	public AvaliadorExpressoes() {
+	public AplicacaoFuncao() {
 		this.parametros = new ArrayList<Expressao>();
 	}
 	
@@ -41,7 +41,7 @@ public class AvaliadorExpressoes implements Expressao {
 	 * @param nome Nome da funcao.
 	 * @param argumentos Lista de argumentos da funcao.
 	 */
-	public AvaliadorExpressoes(String nome, List<Expressao> argumentos) {
+	public AplicacaoFuncao(String nome, List<Expressao> argumentos) {
 		this.nome = nome;
 		this.parametros = argumentos;
 	}
@@ -120,30 +120,40 @@ public class AvaliadorExpressoes implements Expressao {
 	@Override
 	public Valor avaliar() {
 		DeclaracaoFuncao funcao = AmbienteExecucao.getInstancia().obterFuncao(nome);
-		// os System.out.println garantem que a menssagem de erro seja exibida na hora dos testes
-		if (nome==null){// se o nome da funcao chamada eh nulo, entao foi instanciado um objeto para 
-						//chamada da funcao, mas ela nao tem nome.
+		
+		/*
+		 * Se o nome da funcao chamada eh NULL, entao foi instanciado um objeto 
+		 * para chamada da funcao, mas ela nao tem nome.	
+		 */
+		if (nome==null){
 			System.out.println("Funcao chamada nao tem nome");
 			throw new RuntimeException("Funcao chamada nao tem nome");
+			
 		}else if(funcao == null) {
 			System.out.println("Funcao " + nome + " nao declarada");
 			throw new RuntimeException("Funcao " + nome + " nao declarada");
+			
 		}else if (funcao.getArgumentos().size() > parametros.size()){
 			System.out.println("Funcao " + nome + " tem menos parametros dos que os declarados");
 			throw new RuntimeException("Funcao " + nome + " tem menos parametros dos que os declarados");
+			
 		}else if (funcao.getArgumentos().size() < parametros.size()){
 			System.out.println("Funcao " + nome + " tem mais parametros dos que os declarados");
 			throw new RuntimeException("Funcao " + nome + " tem mais parametros dos que os declarados");
+			
 		}else if (!checarTipo()){
 			System.out.println("Tipo da funcao " + nome + " nao equivale ao que foi declarado");
 			throw new RuntimeException("Tipo da funcao " + nome + " nao equivale ao que foi declarado");
+			
 		}
+		
 		AmbienteExecucao.getInstancia().definirEscopo();
 	
-		//faz as associacoes entre argumentos formais 
-		//e parametros da chamada da funcao. 
-		definirAmbiente(funcao);
-		
+		/*
+		 * Faz associacoes entre argumentos formais e parametros
+		 * da chamada da funcao
+		 */
+		definirAmbiente(funcao);	
 		Valor resultado = funcao.getCorpo().avaliar();
 		
 		AmbienteExecucao.getInstancia().removerEscopo();
