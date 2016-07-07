@@ -8,7 +8,10 @@ import br.unb.cic.poo.expressoes.matematicas.ExpressaoPotencia;
 import br.unb.cic.poo.expressoes.matematicas.ExpressaoSoma;
 import br.unb.cic.poo.expressoes.matematicas.ExpressaoSubtracao;
 import br.unb.cic.poo.expressoes.relacionais.ExpressaoIgual;
+import br.unb.cic.poo.funcoes.ArgumentoFormal;
+import br.unb.cic.poo.funcoes.DeclaracaoFuncao;
 import br.unb.cic.poo.expressoes.matematicas.ExpressaoRaizQuadrada;
+import br.unb.cic.poo.valores.Tipo;
 import br.unb.cic.poo.valores.ValorBooleano;
 import br.unb.cic.poo.valores.ValorInteiro;
 
@@ -18,7 +21,7 @@ public abstract class TesteUtil {
 	 *
 	 * Funcoes para facilitar os testes.
 	 */
-	
+		
 	public ExpressaoSoma soma(Expressao expressao1, Expressao expressao2){
 		return new ExpressaoSoma(expressao1, expressao2);
 	}

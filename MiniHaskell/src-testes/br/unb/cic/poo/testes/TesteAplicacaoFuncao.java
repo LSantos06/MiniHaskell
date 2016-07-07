@@ -1,13 +1,18 @@
 package br.unb.cic.poo.testes;
 
+import java.util.ArrayList;
+import java.util.Stack;
+
 import org.junit.Assert;
 import org.junit.Test;
 
+import br.unb.cic.poo.expressoes.Expressao;
 import br.unb.cic.poo.funcoes.AplicacaoFuncao;
 import br.unb.cic.poo.funcoes.ArgumentoFormal;
 import br.unb.cic.poo.funcoes.DeclaracaoFuncao;
 import br.unb.cic.poo.main.AmbienteExecucao;
 import br.unb.cic.poo.valores.Tipo;
+import br.unb.cic.poo.valores.Valor;
 import br.unb.cic.poo.valores.ValorBooleano;
 import br.unb.cic.poo.valores.ValorInteiro;
 
@@ -25,26 +30,47 @@ public class TesteAplicacaoFuncao extends TesteUtil {
 		 * 		}
 		 * }
 		 */
-		//TODO RECURSIVIDADE
+		// um fatorial recursivo eh a funcao que multiplica o valor corrente com o proximo valor (fat n * fat n-1)
+		// a declaracao de funcao eh a mesma independente de n. O que muda eh quantas vezes chamamos(avaliamos essa funcao)
 		DeclaracaoFuncao fat = new DeclaracaoFuncao();
-		 fat.setNome ("fat");
-		 fat.setArgumento(new ArgumentoFormal("x", Tipo.INTEIRO));
-		 fat.setCorpo (ifThenElse(igual(refId("x"), inteiro(0)), 
+		fat.setNome("fat");
+		fat.setArgumento(new ArgumentoFormal("x", Tipo.INTEIRO));
+		fat.setCorpo(ifThenElse(igual(refId("x"), inteiro(1)), 
 					   inteiro(1), 
-					   multiplicacao(refId("x"), /*fat*/(subtracao(refId("x"),inteiro(1))))));
+					   multiplicacao(refId("x"),subtracao(refId("x"),inteiro(1) ) )
+					   			)
+					);
+					   
 		 
-		/*
+		 /*
 		 * Declarando a funcao no ambiente de execucao
 		 */
+		ValorInteiro v1 = inteiro(3);// valor do n inicial
+		// inicio da configuracao da  chamada da funcao (com o n inicial)
 		AmbienteExecucao.getInstancia().declaraFuncao(fat);
-		
-		/*
-		 * fat(5) = 
-		 */
 		AplicacaoFuncao ae = new AplicacaoFuncao();
 		 ae.setNome("fat");
-		 ae.setParametro(inteiro(5));
-		
+		 ae.setParametro(v1);
+		 // fim inicio da configuracao da  chamada da funcao
+		 
+		 // res eh o valor da resposta corrente (ele faz tudo que tem vezes o proximo valor
+		 int res = 1;
+		 
+		 /* ind sao os valores das multiplicacoes em dada iteracao. Exemplo para o fatorial de 5:
+		  	ind = 5 => res = 1 * 5 * 4 (Obs.: 5 * 4 provem da avaliacao da funcao fatorial com parametro 5)
+		  	ind = 3 => res = 20 * 3 * 2 (Obs.: 3 * 2 provem da avaliacao da funcao fatorial com parametro 3)
+		  	ind = 1 => res = 120 * 1 (Obs.: 1 provem da avaliacao da funcao fatorial com parametro 1) */
+		 int ind = v1.getValor();
+		 while (ind > 0){
+			 ValorInteiro result = (ValorInteiro) ae.avaliar();
+			res*= result.getValor(); 
+			ind -=2;
+			ae.resetParametro(inteiro(ind));// reconfigura a chamada da funcao para que ela possa ser realizada com um indice 
+			// atualizado como o exemplo
+		 }
+		 /*
+			 * fat(5) = 
+			 */
 		/*
 		 * fat(5)
 		 *  5 * fat(4) = 120
@@ -64,9 +90,9 @@ public class TesteAplicacaoFuncao extends TesteUtil {
 	     * fat(0)
 	     *  1 
 		 */
-		
-		//Assert.assertEquals(new ValorInteiro(120), ae.avaliar()); 
-		ae.avaliar();
+
+		Assert.assertEquals(new ValorInteiro(6), inteiro(res)); 
+	
 	}
 	
 	@Test
