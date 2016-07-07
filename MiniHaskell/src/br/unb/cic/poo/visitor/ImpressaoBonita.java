@@ -1,5 +1,6 @@
 package br.unb.cic.poo.visitor;
 
+import br.unb.cic.poo.expressoes.Expressao;
 import br.unb.cic.poo.expressoes.ExpressaoIfThenElse;
 import br.unb.cic.poo.expressoes.ExpressaoLet;
 import br.unb.cic.poo.expressoes.ExpressaoReferenciaIdentificador;
@@ -9,6 +10,7 @@ import br.unb.cic.poo.expressoes.relacionais.*;
 import br.unb.cic.poo.funcoes.AplicacaoFuncao;
 import br.unb.cic.poo.valores.ValorBooleano;
 import br.unb.cic.poo.valores.ValorInteiro;
+import br.unb.cic.poo.valores.ValorLista;
 import br.unb.cic.poo.valores.listas.*;
 
 
@@ -212,7 +214,30 @@ public class ImpressaoBonita implements Visitor{
 
 	@Override
 	public void visitar(AplicacaoFuncao expressao) {
-		// TODO Auto-generated method stub
+		/*
+		 * fat (
+		 */
+		System.out.print(expressao.getNome());
+		System.out.print(" (");
+		
+		/*
+		 * x, y, z)
+		 */
+		int contador = 0;
+		
+		for (Expressao parametro: expressao.getParametros()){
+			contador++;
+			
+			parametro.aceitar(this);
+			
+			/*
+			 * Se a expressao a ser printada nao eh a ultima
+			 */
+			if (contador != (expressao.getParametros().size())){
+				System.out.print(", ");
+			}
+		}
+		System.out.print(")");
 		
 	}
 	
@@ -240,7 +265,18 @@ public class ImpressaoBonita implements Visitor{
 
 	@Override
 	public void visitar(ListaNaoVazia<?> expressao) {
-		// TODO Auto-generated method stub
+		System.out.println("Tamanho da lista:" + expressao.tamanho());
+		System.out.println("Cabeca:" + expressao.getCabeca());
+		System.out.println("Cauda:");
+		
+		int tamanho = ((ValorInteiro)expressao.tamanho()).getValor();
+		ValorLista<?> lista = expressao;
+		int indice = 0;
+		
+		for(indice = 0; indice < tamanho; indice++){
+			System.out.println(lista.getCauda().getCabeca());
+			lista = lista.getCauda();
+		}
 		
 	}
 }
