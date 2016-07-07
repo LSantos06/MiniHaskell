@@ -1,64 +1,95 @@
 package br.unb.cic.poo.valores;
 
+import br.unb.cic.poo.valores.listas.ListaNaoVazia;
 import br.unb.cic.poo.valores.listas.ListaVazia;
 
+/**
+ * @author filipe5214957
+ * 
+ * Classe que implementa o valor lista
+ */
 public abstract class ValorLista<T extends Valor> implements Valor{
 
-	protected T valor;
-	protected ValorLista<T> cabeca;
-	protected ValorLista<T> cauda;
+	private Valor cabeca;
+	private ValorLista<T> cauda;
+	private ValorLista<T> anterior;
 	
-	public abstract ValorLista<T> inserir(T valor);
-	public abstract T obterValor();
-	public abstract void remover();
-	
-	public ValorLista(T valor) {
-		this.valor = valor;
+	protected ValorLista(T cabeca) {
+		this.cabeca = cabeca;
+		this.cauda = null;
+		this.anterior = null;
 	}
 	
-	@Override
-	public Tipo tipo() {
-		return valor.tipo();
-	}
-	
-	@Override
-	public boolean checarTipo() {
-		return valor.checarTipo();
-	}
-	
-	@Override
-	public Valor avaliar() {
-		return valor.avaliar();
-	}
-	
-	public T getValor() {
-		return valor;
-	}
-	public void setValor(T valor) {
-		this.valor = valor;
-	}
-	public ValorLista<T> getCabeca() {
+	public Valor getCabeca() {
 		return cabeca;
 	}
-	public void setCabeca(ValorLista<T> cabeca) {
+
+	public void setCabeca(Valor cabeca) {
 		this.cabeca = cabeca;
 	}
+
 	public ValorLista<T> getCauda() {
 		return cauda;
 	}
+
 	public void setCauda(ValorLista<T> cauda) {
 		this.cauda = cauda;
 	}
+
+	public ValorLista<T> getAnterior() {
+		return anterior;
+	}
 	
-	public int tamanho(){
+	public void setAnterior(ValorLista<T> anterior) {
+		this.anterior = anterior;
+	}
+	
+	public ValorLista<T> inserir(T valor) {
+		ValorLista<T> novo = new ListaNaoVazia<T>(valor);
+		if (this.getAnterior() != null) {
+			this.getAnterior().setCauda(novo);
+		}
+		novo.setCauda(this);
+		novo.setAnterior(this.getAnterior());
+		this.setAnterior(novo);
+		
+		return novo;
+	}
+	
+	public ValorLista<T> remover() {
+		if(this.tipo() == Tipo.LISTANAOVAZIA){
+			if (this.getAnterior() != null) {
+				this.getAnterior().setCauda(this.getCauda());
+			}
+			this.getCauda().setAnterior(this.getAnterior());
+			return this.getCauda();
+		}
+		return this;
+	}
+	
+	public ValorLista<T> buscaPorPosicao (ValorInteiro posicao) {
+		ValorLista<T> elemento = this;
+		int aux;
+		
+		for(aux = 0 ; aux != posicao.getValor() ; aux++) {
+			if(aux > this.tamanho().getValor()) {
+				return null;
+			}
+			elemento = elemento.getCauda();
+		}
+		
+		return elemento;
+	}
+	
+	public ValorInteiro tamanho (){
 		int tamanho = 0;
 		ValorLista<?> aux = this;
 		
 		while(!(aux instanceof ListaVazia<?>)){
 			tamanho++;
-			aux = aux.getCauda();
+			aux = ((ListaNaoVazia<?>) aux).getCauda();
 		}
 		
-		return tamanho;		
+		return new ValorInteiro(tamanho);		
 	}
 }
