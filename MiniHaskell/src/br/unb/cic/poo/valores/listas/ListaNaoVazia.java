@@ -5,44 +5,19 @@ import br.unb.cic.poo.valores.Valor;
 import br.unb.cic.poo.valores.ValorLista;
 import br.unb.cic.poo.visitor.Visitor;
 
+/**
+ * @author filipe5214957
+ * 
+ * Classe que implementa o valor lista não vazia
+ */
 public class ListaNaoVazia<T extends Valor> extends ValorLista<T> {
-
-	private Valor cabeca;
-	private ValorLista<T> cauda;
 	
 	public ListaNaoVazia(T cabeca) {
-		super();
-		this.cabeca = cabeca;
-		this.cauda = null;
-	}
-
-	public Valor getCabeca() {
-		return cabeca;
-	}
-
-	public void setCabeca(Valor cabeca) {
-		this.cabeca = cabeca;
-	}
-
-	public ValorLista<T> getCauda() {
-		return cauda;
-	}
-
-	public void setCauda(ValorLista<T> cauda) {
-		this.cauda = cauda;
-	}
-
-	@Override
-	public Valor obterValor() {
-		return this.getCabeca();
-	}
-
-	public ValorLista<T> remover() {
-		if (this.getAnterior() != null) {
-			((ListaNaoVazia<T>) this.getAnterior()).setCauda(this.getCauda());
-		}
-		this.getCauda().setAnterior(this.getAnterior());
-		return this.getCauda();
+		super(cabeca);
+		ListaVazia<T> cauda = new ListaVazia<T>();
+		cauda.setAnterior(this);
+		this.setCauda(cauda);
+		this.setAnterior(null);
 	}
 
 	@Override
@@ -57,7 +32,7 @@ public class ListaNaoVazia<T extends Valor> extends ValorLista<T> {
 
 	@Override
 	public Valor avaliar() {
-		return cabeca.avaliar();
+		return this;
 	}
 	
 	@Override

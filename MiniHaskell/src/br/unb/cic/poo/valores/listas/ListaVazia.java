@@ -5,23 +5,17 @@ import br.unb.cic.poo.valores.Valor;
 import br.unb.cic.poo.valores.ValorLista;
 import br.unb.cic.poo.visitor.Visitor;
 
+/**
+ * @author filipe5214957
+ * 
+ * Classe que implementa o valor lista vazia
+ */
 public class ListaVazia<T extends Valor> extends ValorLista<T> {
 
 	public ListaVazia() {
-		super();
+		super(null);
 	}
-
-	@Override
-	public T obterValor() {
-		return null;
-	}
-
 	
-	@Override
-	public void aceitar(Visitor visitor) {
-		visitor.visitar(this);	
-	}
-
 	@Override
 	public Tipo tipo() {
 		return Tipo.LISTAVAZIA;
@@ -34,7 +28,12 @@ public class ListaVazia<T extends Valor> extends ValorLista<T> {
 
 	@Override
 	public Valor avaliar() {
-		return null;
+		return this;
+	}
+	
+	@Override
+	public void aceitar(Visitor visitor) {
+		visitor.visitar(this);	
 	}
 	
 }
