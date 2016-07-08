@@ -10,7 +10,7 @@ import org.junit.runners.Suite.SuiteClasses;
 		TesteExpressaoMaiorIgual.class, TesteExpressaoMenor.class, TesteExpressaoMenorIgual.class,
 		TesteExpressaoMultiplicacao.class, TesteExpressaoNOT.class, TesteExpressaoOR.class,
 		TesteExpressaoPotencia.class, TesteExpressaoRaizQuadrada.class, TesteExpressaoSoma.class,
-		TesteExpressaoSubtracao.class })
+		TesteExpressaoSubtracao.class, TesteValorLista.class })
 public class AllTests {
 
 }

@@ -10,12 +10,9 @@ import br.unb.cic.poo.expressoes.relacionais.*;
 import br.unb.cic.poo.funcoes.AplicacaoFuncao;
 import br.unb.cic.poo.valores.ValorBooleano;
 import br.unb.cic.poo.valores.ValorInteiro;
-<<<<<<< HEAD
+import br.unb.cic.poo.valores.ValorLista;
 import br.unb.cic.poo.valores.listas.*;
-=======
-import br.unb.cic.poo.valores.listas.ListaNaoVazia;
-import br.unb.cic.poo.valores.listas.ListaVazia;
->>>>>>> origin/ValorListaAtualizado
+
 
 public class ImpressaoBonita implements Visitor{
 
@@ -217,8 +214,6 @@ public class ImpressaoBonita implements Visitor{
 
 	@Override
 	public void visitar(AplicacaoFuncao expressao) {
-		//TODO
-		
 		/*
 		 * fat (
 		 */
@@ -226,7 +221,7 @@ public class ImpressaoBonita implements Visitor{
 		System.out.print(" (");
 		
 		/*
-		 * x, y, z, )
+		 * x, y, z)
 		 */
 		int contador = 0;
 		
@@ -245,7 +240,7 @@ public class ImpressaoBonita implements Visitor{
 		System.out.print(")");
 		
 	}
-
+	
 	@Override
 	public void visitar(ValorBooleano expressao) {
 		if(expressao.getValor()){
@@ -264,18 +259,24 @@ public class ImpressaoBonita implements Visitor{
 
 	@Override
 	public void visitar(ListaVazia<?> expressao) {
-		// TODO Auto-generated method stub
+		System.out.println("Lista Vazia");
 		
 	}
 
 	@Override
 	public void visitar(ListaNaoVazia<?> expressao) {
-		// TODO Auto-generated method stub
+		System.out.println("Tamanho da lista:" + expressao.tamanho());
+		System.out.println("Cabeca:" + expressao.getCabeca());
+		System.out.println("Cauda:");
+		
+		int tamanho = ((ValorInteiro)expressao.tamanho()).getValor();
+		ValorLista<?> lista = expressao;
+		int indice = 0;
+		
+		for(indice = 0; indice < tamanho; indice++){
+			System.out.println(lista.getCauda().getCabeca());
+			lista = lista.getCauda();
+		}
 		
 	}
-<<<<<<< HEAD
-	
-	
-=======
->>>>>>> origin/ValorListaAtualizado
 }

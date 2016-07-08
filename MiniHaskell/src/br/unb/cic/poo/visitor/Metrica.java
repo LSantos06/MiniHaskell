@@ -10,12 +10,8 @@ import br.unb.cic.poo.expressoes.relacionais.*;
 import br.unb.cic.poo.funcoes.AplicacaoFuncao;
 import br.unb.cic.poo.valores.ValorBooleano;
 import br.unb.cic.poo.valores.ValorInteiro;
-<<<<<<< HEAD
+import br.unb.cic.poo.valores.ValorLista;
 import br.unb.cic.poo.valores.listas.*;
-=======
-import br.unb.cic.poo.valores.listas.ListaNaoVazia;
-import br.unb.cic.poo.valores.listas.ListaVazia;
->>>>>>> origin/ValorListaAtualizado
 
 public class Metrica implements Visitor{
 
@@ -150,13 +146,15 @@ public class Metrica implements Visitor{
 
 	@Override
 	public void visitar(AplicacaoFuncao expressao) {
-		//TODO
+		numeroNos += 1;	
+		/*
+		 * Visita cada parametro e conta o numero de nos
+		 */
 		for(Expressao parametro: expressao.getParametros()){
 			parametro.aceitar(this);
-		}
-		
+		}	
 	}
-
+	
 	@Override
 	public void visitar(ValorBooleano expressao) {
 		numeroNos += 1;
@@ -169,13 +167,23 @@ public class Metrica implements Visitor{
 
 	@Override
 	public void visitar(ListaVazia<?> expressao) {
-		// TODO Auto-generated method stub
+		numeroNos += 1;
 		
 	}
 
 	@Override
 	public void visitar(ListaNaoVazia<?> expressao) {
-		// TODO Auto-generated method stub
+		numeroNos += 1;
+		expressao.getCabeca().aceitar(this);
+		
+		int tamanho = ((ValorInteiro)expressao.tamanho()).getValor();
+		ValorLista<?> lista = expressao;
+		int indice = 0;
+		
+		for(indice = 0; indice < tamanho; indice++){
+			lista.getCauda().getCabeca().aceitar(this);;
+			lista = lista.getCauda();
+		}
 		
 	}
 
