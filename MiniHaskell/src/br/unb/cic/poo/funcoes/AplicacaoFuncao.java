@@ -162,12 +162,6 @@ public class AplicacaoFuncao implements Expressao {
 		return resultado;
 	}
 
-	/*
-	 * associar no contexto de execucao os argumentos 
-	 * formais da funcao "f" aos parametros 
-	 * passados na aplicacao de funcao.
-	 * 
-	 */
 	/** 
 	 * @author PedroAcA
 	 * 
@@ -179,35 +173,24 @@ public class AplicacaoFuncao implements Expressao {
 		List<ArgumentoFormal> argumentosFormais = funcao.getArgumentos();
 		
 		for(ArgumentoFormal arg: argumentosFormais) {
-			/*  PedroAcA
+			/*  
 			 * Como a lista de argumentos formais e a lista de argumentos passados para a funcao
-			 * tem que estar "alinhandos", entao os indices das 2 listas serao iguais
-			 * */
+			 * tem que estar "alinhandos", entao os indices das 2 listas serao iguais.
+			 */
 			Expressao exp = parametros.get(argumentosFormais.indexOf(arg));
 			AmbienteExecucao.getInstancia().declaraVariavel(arg.getId(), exp);
-	//		contador++;
-		}
-		
-//		for(int i = 0; i < argumentosFormais.size(); i++) {
-//			ArgumentoFormal arg = argumentosFormais.get(i);
-//			Expressao exp = parametros.get(i);
-//			AmbienteExecucao.getInstancia().declaraVariavel(arg.getId(), exp);
-//		}
-//Uma das possiveis alternaticas usando foreach
-//		for(ArgumentoFormal arg: f.getArgumentos()) {
-//			Expressao exp = parametros.get(contador);
-//			AmbienteExecucao.instance().associarExpressao(arg.getId(), exp);
-//			contador++;
-//		}		
+		}		
 	}
 	
 	@Override
 	public void aceitar(Visitor visitor) {
 		visitor.visitar(this);	
 	}
-	//Reseta o primeiro parametro da Lista
+	
+	/*
+	 * Reseta o primeiro parametro da Lista
+	 */
 	public void resetParametro(ValorInteiro inteiro) {
-		// TODO Auto-generated method stub
 		this.parametros.set(0,inteiro);
 	}
 }
