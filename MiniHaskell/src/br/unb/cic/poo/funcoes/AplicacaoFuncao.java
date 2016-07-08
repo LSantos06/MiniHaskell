@@ -5,6 +5,7 @@ import java.util.List;
 
 import br.unb.cic.poo.valores.Tipo; 
 import br.unb.cic.poo.valores.Valor;
+import br.unb.cic.poo.valores.ValorInteiro;
 import br.unb.cic.poo.visitor.Visitor;
 import br.unb.cic.poo.main.AmbienteExecucao;
 import br.unb.cic.poo.expressoes.Expressao;
@@ -203,5 +204,10 @@ public class AplicacaoFuncao implements Expressao {
 	@Override
 	public void aceitar(Visitor visitor) {
 		visitor.visitar(this);	
+	}
+	//Reseta o primeiro parametro da Lista
+	public void resetParametro(ValorInteiro inteiro) {
+		// TODO Auto-generated method stub
+		this.parametros.set(0,inteiro);
 	}
 }
