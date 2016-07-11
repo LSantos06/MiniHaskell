@@ -16,8 +16,14 @@ public class ProgramaPrincipal {
 		
 		while(!exp.equals("exit")) {
 			try {
-				int res = interpretador.avaliarExpressoes(exp);
-				System.out.println("RES = " + res);
+				String res;
+				try {
+					res = interpretador.avaliarExpressoes(exp);
+					System.out.println("RES = " + res);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 			catch(SintaxeInvalida foo) {
 				System.out.println(foo.getMessage());
